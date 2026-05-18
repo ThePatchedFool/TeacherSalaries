@@ -933,13 +933,18 @@ a, .src-link, .src-tag, .footnote-ref {
 
 .jc-body {
   display: grid;
-  grid-template-columns: 240px 1fr 1fr;
+  grid-template-columns: 240px 1fr;
 }
 .jc-body > div {
   padding: 22px 28px;
   min-width: 0;
 }
+/* Agreement column spans both salary rows */
+.jc-body > div:first-child { grid-row: 1 / 3; }
+/* Vertical divider between Agreement and salary columns */
 .jc-body > div + div { border-left: 1px solid var(--rule); }
+/* Horizontal divider between Graduate and Top-of-scale */
+.jc-body > div:last-child { border-top: 1px solid var(--rule); }
 
 .jc-col-label {
   font-family: var(--mono);
@@ -1191,6 +1196,7 @@ a, .src-link, .src-tag, .footnote-ref {
   .card-body { grid-template-columns: 1fr; }
   .card-col + .salary-grid { border-left: none; border-top: 1px solid var(--rule); }
   .jc-body { grid-template-columns: 1fr; }
+  .jc-body > div:first-child { grid-row: auto; }
   .jc-body > div + div { border-left: none; border-top: 1px solid var(--rule); }
   .foot-grid { grid-template-columns: 1fr 1fr; }
   .change-log { grid-template-columns: 130px 1fr; }
