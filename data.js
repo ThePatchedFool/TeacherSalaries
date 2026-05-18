@@ -8,6 +8,12 @@
 // increases, spanning the current EA and any prior EA(s) in force during that window.
 // Initial sources accessed 2026-04-17; refresh on 2026-05-18 captured the in-principle
 // VGSA 2026 (VIC), endorsed EB11 (QLD), and ratified Teachers Agreement 2026 (TAS).
+//
+// Phase 1 additions (2026-05-18):
+//   - sources[].id      — stable identifier, format "<lowercode>-src-<n>"
+//   - verifiedOn        — per jurisdiction; max of sources[*].accessed
+//   - schedule[].sourceId — points to the source that documents that salary figure
+//   - window.CHANGELOG  — running log of material data changes
 
 window.DATA_AS_OF = "2026-05-18";
 
@@ -18,6 +24,7 @@ window.SALARY_DATA = [
     code: "NSW",
     name: "New South Wales",
     system: "NSW Department of Education",
+    verifiedOn: "2026-04-17",
     ea: {
       name: "Crown Employees (Teachers in Schools and Related Employees) Salaries and Conditions Award 2024",
       status: "current",
@@ -29,53 +36,58 @@ window.SALARY_DATA = [
     graduate: {
       classification: "Classroom Teacher Step 1 (Graduate accreditation). Pre-9 Oct 2023: Band 1 (Graduate).",
       schedule: [
-        { date: "2022-01-01", salary: 73737, increase: "+2.04% (Band 1, 2022 Award)" },
-        { date: "2022-07-01", salary: 73921, increase: "+0.25%" },
-        { date: "2023-01-01", salary: 75791, increase: "+2.53%" },
-        { date: "2023-10-09", salary: 85000, increase: "+12.2% — Band→Step restructure" },
-        { date: "2024-10-09", salary: 87550, increase: "+3.0% (new 2024 Award)" },
-        { date: "2025-10-09", salary: 90177, increase: "+3.0%" },
-        { date: "2026-10-09", salary: 92882, increase: "+3.0%" }
+        { date: "2022-01-01", salary: 73737,  increase: "+2.04% (Band 1, 2022 Award)",         sourceId: "nsw-src-3" },
+        { date: "2022-07-01", salary: 73921,  increase: "+0.25%",                               sourceId: "nsw-src-3" },
+        { date: "2023-01-01", salary: 75791,  increase: "+2.53%",                               sourceId: "nsw-src-3" },
+        { date: "2023-10-09", salary: 85000,  increase: "+12.2% — Band→Step restructure",       sourceId: "nsw-src-2" },
+        { date: "2024-10-09", salary: 87550,  increase: "+3.0% (new 2024 Award)",               sourceId: "nsw-src-1" },
+        { date: "2025-10-09", salary: 90177,  increase: "+3.0%",                                sourceId: "nsw-src-1" },
+        { date: "2026-10-09", salary: 92882,  increase: "+3.0%",                                sourceId: "nsw-src-4" }
       ]
     },
     top: {
       classification: "Classroom Teacher Step 7 (Proficient accreditation). Pre-9 Oct 2023: Band 2.3. HALT above this requires separate NESA accreditation.",
       schedule: [
-        { date: "2022-01-01", salary: 109978, increase: "+2.04% (Band 2.3, 2022 Award)" },
-        { date: "2022-07-01", salary: 110253, increase: "+0.25%" },
-        { date: "2023-01-01", salary: 113042, increase: "+2.53%" },
-        { date: "2023-10-09", salary: 122100, increase: "+8.0% — Band→Step restructure" },
-        { date: "2024-10-09", salary: 125763, increase: "+3.0% (new 2024 Award)" },
-        { date: "2025-10-09", salary: 129536, increase: "+3.0%" },
-        { date: "2026-10-09", salary: 133422, increase: "+3.0%" }
+        { date: "2022-01-01", salary: 109978, increase: "+2.04% (Band 2.3, 2022 Award)",        sourceId: "nsw-src-3" },
+        { date: "2022-07-01", salary: 110253, increase: "+0.25%",                               sourceId: "nsw-src-3" },
+        { date: "2023-01-01", salary: 113042, increase: "+2.53%",                               sourceId: "nsw-src-3" },
+        { date: "2023-10-09", salary: 122100, increase: "+8.0% — Band→Step restructure",        sourceId: "nsw-src-2" },
+        { date: "2024-10-09", salary: 125763, increase: "+3.0% (new 2024 Award)",               sourceId: "nsw-src-1" },
+        { date: "2025-10-09", salary: 129536, increase: "+3.0%",                                sourceId: "nsw-src-1" },
+        { date: "2026-10-09", salary: 133422, increase: "+3.0%",                                sourceId: "nsw-src-4" }
       ]
     },
     sources: [
       {
+        id: "nsw-src-1",
         url: "https://education.nsw.gov.au/content/dam/main-education/industrial-relations/media/documents/awards/Teachers_Award_2024.pdf",
         accessed: "2026-04-17",
         published: "2024-11-26",
         usedFor: "2024 Award text: commencement, expiry, Schedule 1A salary figures, classification labels"
       },
       {
+        id: "nsw-src-2",
         url: "https://education.nsw.gov.au/content/dam/main-education/industrial-relations/media/documents/awards/teachers-award/Teachers_Award_Variation_10_Nov_23.pdf",
         accessed: "2026-04-17",
         published: "2023-11-10",
         usedFor: "2022 Award variation gazetted 10 Nov 2023: Step 1/Step 7 rates from 9 Oct 2023; classification restructure"
       },
       {
+        id: "nsw-src-3",
         url: "https://education.nsw.gov.au/content/dam/main-education/industrial-relations/media/documents/awards/teachers-award-2022.pdf",
         accessed: "2026-04-17",
         published: "2022-12-23",
         usedFor: "2022 Award original: Band 1 and Band 2.3 rates at 1 Jan 2022, 1 Jul 2022, 1 Jan 2023"
       },
       {
+        id: "nsw-src-4",
         url: "https://education.nsw.gov.au/teach-nsw/explore-teaching/salary-of-a-teacher",
         accessed: "2026-04-17",
         published: "2025-12-09",
-        usedFor: "Confirmation of current 2026 rates"
+        usedFor: "Confirmation of current and scheduled future rates including Oct 2026"
       },
       {
+        id: "nsw-src-5",
         url: "https://www.nswtf.org.au/news/2024/12/12/significant-gains-for-school-members/",
         accessed: "2026-04-17",
         published: "2024-12-12",
@@ -89,6 +101,7 @@ window.SALARY_DATA = [
     code: "VIC",
     name: "Victoria",
     system: "Victorian Department of Education",
+    verifiedOn: "2026-05-18",
     ea: {
       name: "Victorian Government Schools Agreement 2022 (VGSA 2022)",
       status: "expired-in-negotiation",
@@ -100,69 +113,75 @@ window.SALARY_DATA = [
     graduate: {
       classification: "Classroom Teacher Range 1 Subdivision 1 (T1-1)",
       schedule: [
-        { date: "2022-01-01", salary: 74234, increase: "+1.0%" },
-        { date: "2022-07-01", salary: 74976, increase: "+1.0%" },
-        { date: "2023-01-01", salary: 75726, increase: "+1.0%" },
-        { date: "2023-07-01", salary: 76484, increase: "+1.0%" },
-        { date: "2024-01-01", salary: 77248, increase: "+1.0%" },
-        { date: "2024-07-01", salary: 78021, increase: "+1.0%" },
-        { date: "2025-01-01", salary: 78801, increase: "+1.0%" },
-        { date: "2025-07-01", salary: 79589, increase: "+1.0%" },
-        { date: "2026-10-01", salary: 91932, increase: "+15.5% structural — in-principle VGSA 2026, aligns graduate with NSW (pending ratification)" },
-        { date: "2027-10-01", salary: 95885, increase: "+4.3% projected (in-principle VGSA 2026)" },
-        { date: "2028-10-01", salary: 100008, increase: "+4.3% projected" },
-        { date: "2029-10-01", salary: 104309, increase: "+4.3% projected" }
+        { date: "2022-01-01", salary: 74234,  increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2022-07-01", salary: 74976,  increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2023-01-01", salary: 75726,  increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2023-07-01", salary: 76484,  increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2024-01-01", salary: 77248,  increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2024-07-01", salary: 78021,  increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2025-01-01", salary: 78801,  increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2025-07-01", salary: 79589,  increase: "+1.0%",                                                                   sourceId: "vic-src-3" },
+        { date: "2026-10-01", salary: 91932,  increase: "+15.5% structural — in-principle VGSA 2026, aligns graduate with NSW (pending ratification)", sourceId: "vic-src-6" },
+        { date: "2027-10-01", salary: 95885,  increase: "+4.3% projected (in-principle VGSA 2026)",                                sourceId: "vic-src-6" },
+        { date: "2028-10-01", salary: 100008, increase: "+4.3% projected",                                                         sourceId: "vic-src-6" },
+        { date: "2029-10-01", salary: 104309, increase: "+4.3% projected",                                                         sourceId: "vic-src-6" }
       ]
     },
     top: {
       classification: "Classroom Teacher Range 2 Subdivision 6 (T2-6). Range 1 → Range 2 requires VIT Full (Proficient) registration plus Range 2 work-value criteria; within Range 2, each annual subdivision increment (2-1 → 2-6) requires a satisfactory Performance & Development review plus ≥6 months at the subdivision — not pure time-served. Learning Specialist and Leading Teacher classifications above T2-6 are promotion positions.",
       schedule: [
-        { date: "2022-01-01", salary: 110119, increase: "+1.0%" },
-        { date: "2022-07-01", salary: 111221, increase: "+1.0%" },
-        { date: "2023-01-01", salary: 112333, increase: "+1.0%" },
-        { date: "2023-07-01", salary: 113456, increase: "+1.0%" },
-        { date: "2024-01-01", salary: 114591, increase: "+1.0%" },
-        { date: "2024-07-01", salary: 115737, increase: "+1.0%" },
-        { date: "2025-01-01", salary: 116894, increase: "+1.0%" },
-        { date: "2025-07-01", salary: 118063, increase: "+1.0%" },
-        { date: "2026-10-01", salary: 133456, increase: "+13.0% structural — in-principle VGSA 2026 (pending ratification)" },
-        { date: "2027-10-01", salary: 139193, increase: "+4.3% projected" },
-        { date: "2028-10-01", salary: 145178, increase: "+4.3% projected" },
-        { date: "2029-10-01", salary: 151419, increase: "+4.3% — endpoint per AEU statement (in-principle VGSA 2026)" }
+        { date: "2022-01-01", salary: 110119, increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2022-07-01", salary: 111221, increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2023-01-01", salary: 112333, increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2023-07-01", salary: 113456, increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2024-01-01", salary: 114591, increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2024-07-01", salary: 115737, increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2025-01-01", salary: 116894, increase: "+1.0%",                                                                   sourceId: "vic-src-1" },
+        { date: "2025-07-01", salary: 118063, increase: "+1.0%",                                                                   sourceId: "vic-src-3" },
+        { date: "2026-10-01", salary: 133456, increase: "+13.0% structural — in-principle VGSA 2026 (pending ratification)",        sourceId: "vic-src-6" },
+        { date: "2027-10-01", salary: 139193, increase: "+4.3% projected",                                                         sourceId: "vic-src-6" },
+        { date: "2028-10-01", salary: 145178, increase: "+4.3% projected",                                                         sourceId: "vic-src-6" },
+        { date: "2029-10-01", salary: 151419, increase: "+4.3% — endpoint per AEU statement (in-principle VGSA 2026)",             sourceId: "vic-src-5" }
       ]
     },
     sources: [
       {
+        id: "vic-src-1",
         url: "https://news.aeuvic.asn.au/app/uploads/2022/02/T122_VGSA_SalaryTables.pdf",
         accessed: "2026-04-17",
         published: "2022-02-01",
         usedFor: "Full VGSA 2022 salary schedule (T1-1 through T2-6) across every effective date"
       },
       {
+        id: "vic-src-2",
         url: "https://www2.education.vic.gov.au/pal/remuneration-teaching-service/print-all",
         accessed: "2026-04-17",
         published: "2025-09-08",
         usedFor: "Confirmation VGSA 2022 is the applicable agreement; annual progression rules"
       },
       {
+        id: "vic-src-3",
         url: "https://www.aeuvic.asn.au/sites/default/files/2025-07/Report%20on%20Comparative%20Salaries%20for%20Victorian%20and%20NSW%20public%20school%20staff%20in%202025%202026.pdf",
         accessed: "2026-04-17",
         published: "2025-07-01",
         usedFor: "Confirmation $79,589 / $118,063 remain the applicable 2026 rates"
       },
       {
+        id: "vic-src-4",
         url: "https://www.theeducatoronline.com/k12/news/completely-unacceptable-school-staff-to-walk-off-the-job-in-victoria/288857",
         accessed: "2026-04-17",
         published: "not stated",
         usedFor: "March 2026 offer terms, rejection, and strike action"
       },
       {
+        id: "vic-src-5",
         url: "https://www.aeuvic.asn.au/significant-pay-and-conditions-boost-victorian-public-school-and-early-childhood-staff",
         accessed: "2026-05-18",
         published: "2026-05-15",
         usedFor: "AEU statement on in-principle VGSA 2026: 28.3% over 4 years, structural adjustments at entry and top, member ballot timeline"
       },
       {
+        id: "vic-src-6",
         url: "https://www.premier.vic.gov.au/labor-will-pay-our-teachers-best-country",
         accessed: "2026-05-18",
         published: "2026-05-15",
@@ -176,6 +195,7 @@ window.SALARY_DATA = [
     code: "QLD",
     name: "Queensland",
     system: "Queensland Department of Education",
+    verifiedOn: "2026-05-18",
     ea: {
       name: "Department of Education State School Teachers' Certified Agreement 2026 (EB11)",
       status: "current",
@@ -187,49 +207,54 @@ window.SALARY_DATA = [
     graduate: {
       classification: "Band 1 Step 1 (4-year-trained graduate). Under EB11 (Jan 2026), the entry rate was lifted one pay-point so new graduates effectively start higher than the historical Band 1 Step 1.",
       schedule: [
-        { date: "2022-01-01", salary: 66556, increase: "rate in force from 2019 CA (+2.5% eff 1 Jul 2021)" },
-        { date: "2022-07-01", salary: 69218, increase: "+4.0% (new 2022 CA)" },
-        { date: "2023-07-01", salary: 71986, increase: "+4.0%" },
-        { date: "2024-07-01", salary: 74146, increase: "+3.0%" },
-        { date: "2026-01-01", salary: 90833, increase: "+22.5% — EB11 structural reset, graduate starting rate raised one pay-point (backdated)" }
+        { date: "2022-01-01", salary: 66556,  increase: "rate in force from 2019 CA (+2.5% eff 1 Jul 2021)", sourceId: "qld-src-2" },
+        { date: "2022-07-01", salary: 69218,  increase: "+4.0% (new 2022 CA)",                                sourceId: "qld-src-3" },
+        { date: "2023-07-01", salary: 71986,  increase: "+4.0%",                                              sourceId: "qld-src-3" },
+        { date: "2024-07-01", salary: 74146,  increase: "+3.0%",                                              sourceId: "qld-src-3" },
+        { date: "2026-01-01", salary: 90833,  increase: "+22.5% — EB11 structural reset, graduate starting rate raised one pay-point (backdated)", sourceId: "qld-src-5" }
       ]
     },
     top: {
       classification: "Experienced Senior Teacher Step 2 (EST2, created 20 Jan 2022). Progression is Band 1 → Senior Teacher → EST1 → EST2; each post-Band-1 step requires Proficient accreditation plus an Annual Performance Review with principal verification (the EST2 step uses HAT descriptors to inform the discussion), but unlike ST it carries no personal undertaking. Senior/Experienced Senior Teacher classifications are increment steps, not promotion positions. If HAT/LT certification lapses, teachers revert to EST2 — confirming it as the top of the classroom-teacher scale.",
       schedule: [
-        { date: "2022-01-01", salary: 108766, increase: "Experienced Senior Teacher Step 1 — Step 2 not yet in existence" },
-        { date: "2022-01-20", salary: 110500, increase: "new Step 2 classification created" },
-        { date: "2022-07-01", salary: 114921, increase: "+4.0% (new 2022 CA)" },
-        { date: "2023-07-01", salary: 119518, increase: "+4.0%" },
-        { date: "2024-07-01", salary: 123102, increase: "+3.0%" }
+        { date: "2022-01-01", salary: 108766, increase: "Experienced Senior Teacher Step 1 — Step 2 not yet in existence", sourceId: "qld-src-2" },
+        { date: "2022-01-20", salary: 110500, increase: "new Step 2 classification created",                              sourceId: "qld-src-2" },
+        { date: "2022-07-01", salary: 114921, increase: "+4.0% (new 2022 CA)",                                            sourceId: "qld-src-3" },
+        { date: "2023-07-01", salary: 119518, increase: "+4.0%",                                                          sourceId: "qld-src-3" },
+        { date: "2024-07-01", salary: 123102, increase: "+3.0%",                                                          sourceId: "qld-src-3" }
       ]
     },
     sources: [
       {
+        id: "qld-src-1",
         url: "https://www.qirc.qld.gov.au/sites/default/files/2022-12/2022_cb135.pdf",
         accessed: "2026-04-17",
         published: "2022-12-01",
         usedFor: "2022 CA text: name, commencement, nominal expiry"
       },
       {
+        id: "qld-src-2",
         url: "https://www.qirc.qld.gov.au/sites/default/files/2019_cb101.pdf",
         accessed: "2026-04-17",
         published: "2019-11-19",
         usedFor: "2019 CA: Schedule 1 Band 1 and EST rates carrying into early 2022; Step 2 creation footnote"
       },
       {
+        id: "qld-src-3",
         url: "https://www.qtu.asn.au/salaries-CA2022",
         accessed: "2026-04-17",
         published: "2023-01-19",
         usedFor: "Full salary schedule for Band 1 Step 1, Senior Teacher, Experienced Senior Teacher"
       },
       {
+        id: "qld-src-4",
         url: "https://alt-qed.qed.qld.gov.au/working-with-us/delivering-for-queensland-teachers/eb-updates",
         accessed: "2026-04-17",
         published: "2025-11-18",
         usedFor: "EB11 negotiation timeline, ballot failure, arbitration referral"
       },
       {
+        id: "qld-src-5",
         url: "https://statements.qld.gov.au/statements/104690",
         accessed: "2026-05-18",
         published: "2026-03-13",
@@ -243,6 +268,7 @@ window.SALARY_DATA = [
     code: "WA",
     name: "Western Australia",
     system: "Western Australian Department of Education",
+    verifiedOn: "2026-04-17",
     ea: {
       name: "School Education Act Employees' (Teachers and Administrators) General Agreement 2023",
       status: "current",
@@ -254,43 +280,47 @@ window.SALARY_DATA = [
     graduate: {
       classification: "Level 2.1 (four-year-trained graduate entry)",
       schedule: [
-        { date: "2022-01-01", salary: 75267, increase: "retrospective rate under 2021 EA (backdated to 6 Dec 2021)" },
-        { date: "2022-12-06", salary: 78397, increase: "+4.2% ($3,130 flat) under 2021 EA" },
-        { date: "2023-12-06", salary: 82317, increase: "+5.0% under 2023 EA (calculated)" },
-        { date: "2024-12-06", salary: 85610, increase: "+4.0% (calculated)" },
-        { date: "2025-12-06", salary: 88178, increase: "+3.0%" }
+        { date: "2022-01-01", salary: 75267,  increase: "retrospective rate under 2021 EA (backdated to 6 Dec 2021)", sourceId: "wa-src-2" },
+        { date: "2022-12-06", salary: 78397,  increase: "+4.2% ($3,130 flat) under 2021 EA",                          sourceId: "wa-src-2" },
+        { date: "2023-12-06", salary: 82317,  increase: "+5.0% under 2023 EA (calculated)",                           sourceId: "wa-src-1" },
+        { date: "2024-12-06", salary: 85610,  increase: "+4.0% (calculated)",                                         sourceId: "wa-src-1" },
+        { date: "2025-12-06", salary: 88178,  increase: "+3.0%",                                                      sourceId: "wa-src-1" }
       ]
     },
     top: {
       classification: "Level 3.2 Classroom Teacher — top of the personal-attainment ladder. Progression: Level 2 → L3.1 requires a portfolio assessment (written evidence against five L3CT competencies + 45-minute oral), then L3.1 → L3.2 is a 12-month increment. Level 3.3 sits above (Dec 2025: $147,077) but is a role-contingent classification assigned at 'identified schools in need', not a universal step. Senior Teacher (WA) was abolished; L3CT is the only advanced classroom-teacher stream.",
       schedule: [
-        { date: "2022-01-01", salary: 122185, increase: "Level 3.2 — top step under 2021 EA" },
-        { date: "2022-12-06", salary: 125850, increase: "+3.0% (Level 3.2)" },
-        { date: "2023-12-06", salary: 132143, increase: "+5.0% (2023 EA)" },
-        { date: "2024-12-06", salary: 137428, increase: "+4.0%" },
-        { date: "2025-12-06", salary: 141551, increase: "+3.0%" }
+        { date: "2022-01-01", salary: 122185, increase: "Level 3.2 — top step under 2021 EA",                         sourceId: "wa-src-2" },
+        { date: "2022-12-06", salary: 125850, increase: "+3.0% (Level 3.2)",                                          sourceId: "wa-src-2" },
+        { date: "2023-12-06", salary: 132143, increase: "+5.0% (2023 EA)",                                            sourceId: "wa-src-1" },
+        { date: "2024-12-06", salary: 137428, increase: "+4.0%",                                                      sourceId: "wa-src-1" },
+        { date: "2025-12-06", salary: 141551, increase: "+3.0%",                                                      sourceId: "wa-src-1" }
       ]
     },
     sources: [
       {
+        id: "wa-src-1",
         url: "https://downloads.wairc.wa.gov.au/agreements/sch013.pdf",
         accessed: "2026-04-17",
         published: "2024-11-04",
         usedFor: "2023 EA registered text (canonical)"
       },
       {
+        id: "wa-src-2",
         url: "https://downloads.wairc.wa.gov.au/agreements/sch012.pdf",
         accessed: "2026-04-17",
         published: "2022-08-02",
         usedFor: "2021 EA: Schedule A Tables 4 & 10 — Level 2.1 and Level 3.2 rates at 6 Dec 2021 and 6 Dec 2022"
       },
       {
+        id: "wa-src-3",
         url: "https://www.sstuwa.org.au/WesternTeacher/2025/volume-542-march-2025/time-reap-eba-rewards",
         accessed: "2026-04-17",
         published: "2025-03-01",
         usedFor: "2023 EA: agreement name, registration date, 5%/4%/3% increase schedule"
       },
       {
+        id: "wa-src-4",
         url: "https://www.wa.gov.au/government/media-statements/Cook-Labor-Government/Teachers-receive-pay-rise-as-part-of-big-investment-into-education-20240705",
         accessed: "2026-04-17",
         published: "2024-07-05",
@@ -304,6 +334,7 @@ window.SALARY_DATA = [
     code: "SA",
     name: "South Australia",
     system: "South Australian Department for Education",
+    verifiedOn: "2026-04-17",
     ea: {
       name: "South Australian School and Preschool Education Staff Enterprise Agreement 2024",
       status: "current",
@@ -315,45 +346,49 @@ window.SALARY_DATA = [
     graduate: {
       classification: "Teacher Tier 1 (permanent, 4-year-trained). Pre-2024 EA: Step 1 (same 9-step scale, relabelled as 'Tier' in the 2024 EA).",
       schedule: [
-        { date: "2022-01-01", salary: 73052, increase: "Step 1 — rate from 2020 EA (+2.35% eff May 2021)" },
-        { date: "2022-05-02", salary: 74769, increase: "+2.35% (final 2020 EA rise)" },
-        { date: "2023-05-08", salary: 77760, increase: "+4.0% (first 2024 EA rise, backdated)" },
-        { date: "2024-05-06", salary: 80093, increase: "+3.0%" },
-        { date: "2025-05-09", salary: 82496, increase: "+3.0%" },
-        { date: "2026-05-04", salary: 84971, increase: "+3.0% (scheduled, not yet published)" }
+        { date: "2022-01-01", salary: 73052,  increase: "Step 1 — rate from 2020 EA (+2.35% eff May 2021)", sourceId: "sa-src-2" },
+        { date: "2022-05-02", salary: 74769,  increase: "+2.35% (final 2020 EA rise)",                       sourceId: "sa-src-2" },
+        { date: "2023-05-08", salary: 77760,  increase: "+4.0% (first 2024 EA rise, backdated)",             sourceId: "sa-src-3" },
+        { date: "2024-05-06", salary: 80093,  increase: "+3.0%",                                             sourceId: "sa-src-3" },
+        { date: "2025-05-09", salary: 82496,  increase: "+3.0%",                                             sourceId: "sa-src-3" },
+        { date: "2026-05-04", salary: 84971,  increase: "+3.0% (scheduled, not yet published)",              sourceId: "sa-src-1" }
       ]
     },
     top: {
       classification: "Teacher Tier 9. Tiers 1–8 are automatic annual progression; Tier 9 is competency-based — teachers apply after reaching Tier 8 and must demonstrate the required competencies. Pre-2024 EA: Step 9 (same arrangement). Advanced Skills Teacher (AST1 ~$124,076) requires a separate formal selection/portfolio process above this.",
       schedule: [
-        { date: "2022-01-01", salary: 105951, increase: "Step 9 — rate from 2020 EA" },
-        { date: "2022-05-02", salary: 108441, increase: "+2.35% (final 2020 EA rise)" },
-        { date: "2023-05-08", salary: 112779, increase: "+4.0% (first 2024 EA rise, backdated)" },
-        { date: "2024-05-06", salary: 116162, increase: "+3.0%" },
-        { date: "2025-05-09", salary: 119647, increase: "+3.0%" },
-        { date: "2026-05-04", salary: 123236, increase: "+3.0% (scheduled, not yet published)" }
+        { date: "2022-01-01", salary: 105951, increase: "Step 9 — rate from 2020 EA",                        sourceId: "sa-src-2" },
+        { date: "2022-05-02", salary: 108441, increase: "+2.35% (final 2020 EA rise)",                       sourceId: "sa-src-2" },
+        { date: "2023-05-08", salary: 112779, increase: "+4.0% (first 2024 EA rise, backdated)",             sourceId: "sa-src-3" },
+        { date: "2024-05-06", salary: 116162, increase: "+3.0%",                                             sourceId: "sa-src-3" },
+        { date: "2025-05-09", salary: 119647, increase: "+3.0%",                                             sourceId: "sa-src-3" },
+        { date: "2026-05-04", salary: 123236, increase: "+3.0% (scheduled, not yet published)",              sourceId: "sa-src-1" }
       ]
     },
     sources: [
       {
+        id: "sa-src-1",
         url: "https://www.saet.sa.gov.au/app/uploads/2024/03/ET-24-00640-Enterprise-agreement-approval-South-Australian-School-and-Preschool-Education-Staff-Enterprise-Agreement-2024.pdf",
         accessed: "2026-04-17",
         published: "2024-03-25",
         usedFor: "2024 EA SAET approval order: name, commencement, nominal life"
       },
       {
+        id: "sa-src-2",
         url: "https://www.saet.sa.gov.au/app/uploads/2020/04/South-Australian-School-and-Preschool-Education-Staff-Enterprise-Agreement-2020-1.pdf",
         accessed: "2026-04-17",
         published: "2020-04-07",
         usedFor: "2020 EA Schedule 1 Teacher wages table carrying into 2022 and ending May 2022"
       },
       {
+        id: "sa-src-3",
         url: "https://www.education.sa.gov.au/docs/p-and-c/employee-relations-awards-and-agreements/school-teachers-pay-rates.pdf",
         accessed: "2026-04-17",
         published: "2025-05-09",
         usedFor: "Current rate sheet anchor for Tier 1/Tier 9 reverse-verifying 2023/2024 figures"
       },
       {
+        id: "sa-src-4",
         url: "https://premier.sa.gov.au/media-releases/news-archive/overwhelming-support-for-$1.6-billion-ea",
         accessed: "2026-04-17",
         published: "2024-03-01",
@@ -367,6 +402,7 @@ window.SALARY_DATA = [
     code: "TAS",
     name: "Tasmania",
     system: "Tasmanian Department for Education, Children and Young People (DECYP)",
+    verifiedOn: "2026-05-18",
     ea: {
       name: "Teachers Agreement 2026 (alongside Teaching Service (Tasmanian Public Sector) Award S197)",
       status: "current",
@@ -378,61 +414,67 @@ window.SALARY_DATA = [
     graduate: {
       classification: "Teacher Band 1 Level 5 (4-year-trained graduate entry)",
       schedule: [
-        { date: "2022-01-01", salary: 72725, increase: "rate from 2021 EA (+2.35% eff Mar 2021)" },
-        { date: "2022-03-03", salary: 74434, increase: "+2.35% (final 2021 EA rise)" },
-        { date: "2023-03-02", salary: 78074, increase: "+4.89% (first 2023 EA rise)" },
-        { date: "2024-02-29", salary: 80416, increase: "+3.0%" },
-        { date: "2025-02-27", salary: 82828, increase: "+3.0% (final 2023 EA rise)" },
-        { date: "2026-03-05", salary: 85313, increase: "+3.0% (first 2026 EA rise, backdated)" },
-        { date: "2027-03-04", salary: 87872, increase: "+3.0%" },
-        { date: "2028-03-02", salary: 90289, increase: "+2.75% (final scheduled)" }
+        { date: "2022-01-01", salary: 72725,  increase: "rate from 2021 EA (+2.35% eff Mar 2021)",            sourceId: "tas-src-2" },
+        { date: "2022-03-03", salary: 74434,  increase: "+2.35% (final 2021 EA rise)",                        sourceId: "tas-src-2" },
+        { date: "2023-03-02", salary: 78074,  increase: "+4.89% (first 2023 EA rise)",                        sourceId: "tas-src-1" },
+        { date: "2024-02-29", salary: 80416,  increase: "+3.0%",                                              sourceId: "tas-src-1" },
+        { date: "2025-02-27", salary: 82828,  increase: "+3.0% (final 2023 EA rise)",                         sourceId: "tas-src-1" },
+        { date: "2026-03-05", salary: 85313,  increase: "+3.0% (first 2026 EA rise, backdated)",              sourceId: "tas-src-6" },
+        { date: "2027-03-04", salary: 87872,  increase: "+3.0%",                                              sourceId: "tas-src-6" },
+        { date: "2028-03-02", salary: 90289,  increase: "+2.75% (final scheduled)",                           sourceId: "tas-src-6" }
       ]
     },
     top: {
       classification: "Teacher Band 1 Level 13. Progression from L12 → L13 requires 12 months at L12 plus Full (not Provisional) Teacher Registration from the Tasmanian Teachers Registration Board — the Tasmanian equivalent of Proficient accreditation. Once both are satisfied, the step is effectively automatic. Advanced Skills Teacher Band 2 Level 3 ($125,464) is a selection-based leadership classification and excluded.",
       schedule: [
-        { date: "2022-01-01", salary: 104313, increase: "rate from 2021 EA" },
-        { date: "2022-03-03", salary: 106764, increase: "+2.35% (final 2021 EA rise)" },
-        { date: "2023-03-02", salary: 111536, increase: "+4.47% (first 2023 EA rise)" },
-        { date: "2024-02-29", salary: 114882, increase: "+3.0%" },
-        { date: "2025-02-27", salary: 118328, increase: "+3.0% (final 2023 EA rise)" },
-        { date: "2026-03-05", salary: 122393, increase: "+$500 lump to base, then +3.0% (first 2026 EA rise, backdated)" },
-        { date: "2027-03-04", salary: 126065, increase: "+3.0%" },
-        { date: "2028-03-02", salary: 129531, increase: "+2.75% (final scheduled)" }
+        { date: "2022-01-01", salary: 104313, increase: "rate from 2021 EA",                                  sourceId: "tas-src-2" },
+        { date: "2022-03-03", salary: 106764, increase: "+2.35% (final 2021 EA rise)",                        sourceId: "tas-src-2" },
+        { date: "2023-03-02", salary: 111536, increase: "+4.47% (first 2023 EA rise)",                        sourceId: "tas-src-1" },
+        { date: "2024-02-29", salary: 114882, increase: "+3.0%",                                              sourceId: "tas-src-1" },
+        { date: "2025-02-27", salary: 118328, increase: "+3.0% (final 2023 EA rise)",                         sourceId: "tas-src-1" },
+        { date: "2026-03-05", salary: 122393, increase: "+$500 lump to base, then +3.0% (first 2026 EA rise, backdated)", sourceId: "tas-src-6" },
+        { date: "2027-03-04", salary: 126065, increase: "+3.0%",                                              sourceId: "tas-src-6" },
+        { date: "2028-03-02", salary: 129531, increase: "+2.75% (final scheduled)",                           sourceId: "tas-src-6" }
       ]
     },
     sources: [
       {
+        id: "tas-src-1",
         url: "https://publicdocumentcentre.education.tas.gov.au/library/Shared%20Documents/Salary-Scales.pdf",
         accessed: "2026-04-17",
         published: "2026-03-23",
         usedFor: "Current DECYP salary scales v1.11 (Teacher Band 1 Levels 1–13, AST)"
       },
       {
+        id: "tas-src-2",
         url: "https://www.tic.tas.gov.au/__data/assets/pdf_file/0009/778743/T15161-No-3-of-2024-Teaching-Service-Tasmanian-Public-Sector-Award-S197.pdf",
         accessed: "2026-04-17",
         published: "2024-08-14",
         usedFor: "Award S197 Order No 3 of 2024: consolidated Band 1 salary tables across 2020–2023"
       },
       {
+        id: "tas-src-3",
         url: "https://www.tic.tas.gov.au/__data/assets/pdf_file/0004/710167/2023-TASIC-19-T15024-of-2023-Filing-of-the-Teachers-Agreement-2023.pdf",
         accessed: "2026-04-17",
         published: "2023-05-09",
         usedFor: "Filing decision: TA 2023 effective 20 Sep 2022, expiry 19 Sep 2025"
       },
       {
+        id: "tas-src-4",
         url: "https://www.premier.tas.gov.au/latest-news/2026/march/second-wage-offer-put-to-tasmanian-teachers",
         accessed: "2026-04-17",
         published: "2026-03-01",
         usedFor: "Second government offer terms and rejection"
       },
       {
+        id: "tas-src-5",
         url: "https://www.premier.tas.gov.au/latest-news/2026/april/teachers-secure-fair,-affordable-wage-agreement",
         accessed: "2026-05-18",
         published: "2026-04-27",
         usedFor: "Premier's confirmation of Teachers Agreement 2026 acceptance (26 Apr 2026), 3% / 3% / 2.75% pay rises"
       },
       {
+        id: "tas-src-6",
         url: "https://aeutas.org.au/teachers-offer/",
         accessed: "2026-05-18",
         published: "2026-04-15",
@@ -446,6 +488,7 @@ window.SALARY_DATA = [
     code: "ACT",
     name: "Australian Capital Territory",
     system: "ACT Education Directorate (ACT Public Service)",
+    verifiedOn: "2026-04-17",
     ea: {
       name: "ACT Public Sector Education Directorate (Teaching Staff) Enterprise Agreement 2023–2026",
       status: "expired-in-negotiation",
@@ -457,54 +500,58 @@ window.SALARY_DATA = [
     graduate: {
       classification: "Teacher Level 1 (TL1, New Educator). Pre-27 Jan 2024: Classroom Teacher 2.",
       schedule: [
-        { date: "2022-01-01", salary: 75443, increase: "CT2 — rate from 2018–2022 EA (+3.0% eff Jul 2021)" },
-        { date: "2022-07-07", salary: 76575, increase: "+1.5% (final 2018–2022 EA rise)" },
-        { date: "2023-01-05", salary: 78325, increase: "+$1,750 flat (first 2023–2026 EA rise)" },
-        { date: "2023-06-08", salary: 79108, increase: "+1.0%" },
-        { date: "2023-12-07", salary: 80858, increase: "+$1,750 flat" },
-        { date: "2024-01-27", salary: 84978, increase: "CT→TL restructure" },
-        { date: "2024-06-06", salary: 86253, increase: "+1.5%" },
-        { date: "2024-12-05", salary: 88615, increase: "+1.0% + $1,500 flat" },
-        { date: "2025-06-05", salary: 89501, increase: "+1.0%" },
-        { date: "2025-12-04", salary: 91396, increase: "+1.0% + $1,000 flat" }
+        { date: "2022-01-01", salary: 75443,  increase: "CT2 — rate from 2018–2022 EA (+3.0% eff Jul 2021)", sourceId: "act-src-2" },
+        { date: "2022-07-07", salary: 76575,  increase: "+1.5% (final 2018–2022 EA rise)",                    sourceId: "act-src-2" },
+        { date: "2023-01-05", salary: 78325,  increase: "+$1,750 flat (first 2023–2026 EA rise)",             sourceId: "act-src-1" },
+        { date: "2023-06-08", salary: 79108,  increase: "+1.0%",                                              sourceId: "act-src-1" },
+        { date: "2023-12-07", salary: 80858,  increase: "+$1,750 flat",                                       sourceId: "act-src-1" },
+        { date: "2024-01-27", salary: 84978,  increase: "CT→TL restructure",                                  sourceId: "act-src-1" },
+        { date: "2024-06-06", salary: 86253,  increase: "+1.5%",                                              sourceId: "act-src-3" },
+        { date: "2024-12-05", salary: 88615,  increase: "+1.0% + $1,500 flat",                                sourceId: "act-src-3" },
+        { date: "2025-06-05", salary: 89501,  increase: "+1.0%",                                              sourceId: "act-src-3" },
+        { date: "2025-12-04", salary: 91396,  increase: "+1.0% + $1,000 flat",                                sourceId: "act-src-3" }
       ]
     },
     top: {
       classification: "Teacher Level 8 (TL8, created 27 Jan 2025). Pre-27 Jan 2024: Classroom Teacher 10. 27 Jan 2024 to 26 Jan 2025: Teacher Level 7 (CT10 rate carried over under new label, then received EA increases).",
       schedule: [
-        { date: "2022-01-01", salary: 112930, increase: "CT10 — rate from 2018–2022 EA" },
-        { date: "2022-07-07", salary: 114624, increase: "+1.5% (final 2018–2022 EA rise)" },
-        { date: "2023-01-05", salary: 116374, increase: "+$1,750 flat (first 2023–2026 EA rise)" },
-        { date: "2023-06-08", salary: 117538, increase: "+1.0%" },
-        { date: "2023-12-07", salary: 119288, increase: "+$1,750 flat" },
-        { date: "2024-01-27", salary: 119288, increase: "CT10 → TL7 (rename only)" },
-        { date: "2024-06-06", salary: 121077, increase: "+1.5% (TL7)" },
-        { date: "2024-12-05", salary: 123788, increase: "+1.0% + $1,500 flat (TL7)" },
-        { date: "2025-01-27", salary: 125582, increase: "new TL8 top step created" },
-        { date: "2025-06-05", salary: 126838, increase: "+1.0%" },
-        { date: "2025-12-04", salary: 129106, increase: "+1.0% + $1,000 flat" }
+        { date: "2022-01-01", salary: 112930, increase: "CT10 — rate from 2018–2022 EA",                      sourceId: "act-src-2" },
+        { date: "2022-07-07", salary: 114624, increase: "+1.5% (final 2018–2022 EA rise)",                    sourceId: "act-src-2" },
+        { date: "2023-01-05", salary: 116374, increase: "+$1,750 flat (first 2023–2026 EA rise)",             sourceId: "act-src-1" },
+        { date: "2023-06-08", salary: 117538, increase: "+1.0%",                                              sourceId: "act-src-1" },
+        { date: "2023-12-07", salary: 119288, increase: "+$1,750 flat",                                       sourceId: "act-src-1" },
+        { date: "2024-01-27", salary: 119288, increase: "CT10 → TL7 (rename only)",                          sourceId: "act-src-1" },
+        { date: "2024-06-06", salary: 121077, increase: "+1.5% (TL7)",                                        sourceId: "act-src-3" },
+        { date: "2024-12-05", salary: 123788, increase: "+1.0% + $1,500 flat (TL7)",                         sourceId: "act-src-3" },
+        { date: "2025-01-27", salary: 125582, increase: "new TL8 top step created",                          sourceId: "act-src-3" },
+        { date: "2025-06-05", salary: 126838, increase: "+1.0%",                                              sourceId: "act-src-3" },
+        { date: "2025-12-04", salary: 129106, increase: "+1.0% + $1,000 flat",                                sourceId: "act-src-3" }
       ]
     },
     sources: [
       {
+        id: "act-src-1",
         url: "https://www.cmtedd.act.gov.au/__data/assets/pdf_file/0011/2231102/Education-Directorate-Teaching-Staff-Enterprise-Agreement-2023-2026.pdf",
         accessed: "2026-04-17",
         published: "2023-08-14",
         usedFor: "2023–2026 EA: clauses, Annex A pay tables (pre- and post-27-Jan-2024), CT→TL translation"
       },
       {
+        id: "act-src-2",
         url: "https://www.cmtedd.act.gov.au/__data/assets/pdf_file/0004/1374637/ACT-Public-Sector-Education-Directorate-Teaching-Staff-Enterprise-Agreement-2018-2022-FINAL.pdf",
         accessed: "2026-04-17",
         published: "2019-08-14",
         usedFor: "2018–2022 EA: CT2 and CT10 rates at July 2021 and July 2022"
       },
       {
+        id: "act-src-3",
         url: "https://www.aeuact.org.au/wp-content/uploads/2024/12/Teacher-2024-2025-payrise-explainer-with-increment-FAQ.pdf",
         accessed: "2026-04-17",
         published: "2024-12-01",
         usedFor: "TL1 through TL8 step-by-step dollar figures 2024–2025; TL8 creation"
       },
       {
+        id: "act-src-4",
         url: "https://www.cmtedd.act.gov.au/employment-framework/for-employees/agreements/2025-enterprise-bargaining",
         accessed: "2026-04-17",
         published: "not stated",
@@ -518,6 +565,7 @@ window.SALARY_DATA = [
     code: "NT",
     name: "Northern Territory",
     system: "NT Department of Education (NT Public Sector)",
+    verifiedOn: "2026-04-17",
     ea: {
       name: "Northern Territory Public Sector Educators' 2024–2027 Enterprise Agreement",
       status: "current",
@@ -529,50 +577,85 @@ window.SALARY_DATA = [
     graduate: {
       classification: "Classroom Teacher 1 (CT1). Old-scale CT1 (pre-11 Oct 2024) had the same label but a lower value; the 2024 restructure added a $1,000 graduate uplift in addition to the 4.3% rise.",
       schedule: [
-        { date: "2022-01-01", salary: 77047, increase: "old CT1 — rate from 2017–2021 EA (+2.5% eff Oct 2020)" },
-        { date: "2023-02-16", salary: 81739, increase: "back-pay event: two 3% rises (Oct 2021 & Oct 2022)" },
-        { date: "2023-10-11", salary: 84191, increase: "+3.0% (final old-EA rise)" },
-        { date: "2024-10-11", salary: 92215, increase: "new CT1 + 4.3% + restructure (~+9.5%)" },
-        { date: "2026-01-01", salary: 96180, increase: "+4.3%" },
-        { date: "2027-01-01", salary: 100316, increase: "+4.3%" }
+        { date: "2022-01-01", salary: 77047,  increase: "old CT1 — rate from 2017–2021 EA (+2.5% eff Oct 2020)", sourceId: "nt-src-2" },
+        { date: "2023-02-16", salary: 81739,  increase: "back-pay event: two 3% rises (Oct 2021 & Oct 2022)",    sourceId: "nt-src-3" },
+        { date: "2023-10-11", salary: 84191,  increase: "+3.0% (final old-EA rise)",                              sourceId: "nt-src-3" },
+        { date: "2024-10-11", salary: 92215,  increase: "new CT1 + 4.3% + restructure (~+9.5%)",                 sourceId: "nt-src-1" },
+        { date: "2026-01-01", salary: 96180,  increase: "+4.3%",                                                  sourceId: "nt-src-1" },
+        { date: "2027-01-01", salary: 100316, increase: "+4.3%",                                                  sourceId: "nt-src-1" }
       ]
     },
     top: {
       classification: "Classroom Teacher 9 (CT9). Under the 2017–2021 and 2021–2024 EAs, CT9 was the top of a 9-step scale; the 2024 EA created a brand-new CT9 top step above the old CT9 (old CT9 ≈ new CT8). Senior Teacher (ST1–ST8) is explicitly 'promotion based' in clause 37.5(c).",
       schedule: [
-        { date: "2022-01-01", salary: 110496, increase: "old CT9 — rate from 2017–2021 EA" },
-        { date: "2023-02-16", salary: 117225, increase: "back-pay event: two 3% rises (Oct 2021 & Oct 2022)" },
-        { date: "2023-10-11", salary: 120742, increase: "+3.0% (final old-EA rise)" },
-        { date: "2024-10-11", salary: 131349, increase: "new CT9 top step + 4.3% (~+8.8%)" },
-        { date: "2026-01-01", salary: 136997, increase: "+4.3%" },
-        { date: "2027-01-01", salary: 142888, increase: "+4.3%" }
+        { date: "2022-01-01", salary: 110496, increase: "old CT9 — rate from 2017–2021 EA",                       sourceId: "nt-src-2" },
+        { date: "2023-02-16", salary: 117225, increase: "back-pay event: two 3% rises (Oct 2021 & Oct 2022)",    sourceId: "nt-src-3" },
+        { date: "2023-10-11", salary: 120742, increase: "+3.0% (final old-EA rise)",                              sourceId: "nt-src-3" },
+        { date: "2024-10-11", salary: 131349, increase: "new CT9 top step + 4.3% (~+8.8%)",                      sourceId: "nt-src-1" },
+        { date: "2026-01-01", salary: 136997, increase: "+4.3%",                                                  sourceId: "nt-src-1" },
+        { date: "2027-01-01", salary: 142888, increase: "+4.3%",                                                  sourceId: "nt-src-1" }
       ]
     },
     sources: [
       {
+        id: "nt-src-1",
         url: "https://ocpe.nt.gov.au/media/documents/nt-public-sector-employment-information-about-ntps-employment/information-about-ntps-employment/northern-territory-public-sector-educators-2024-2027-enterprise-agreement.PDF",
         accessed: "2026-04-17",
         published: "2024-10-31",
         usedFor: "Current EA: classifications, Schedule 4 salary tables, clause 37.5 Senior Teacher"
       },
       {
+        id: "nt-src-2",
         url: "https://ocpe.nt.gov.au/__data/assets/pdf_file/0004/243994/NTPS-Teachers-and-Assistant-Teachers-2017-2021-Enterprise-Agreement.pdf",
         accessed: "2026-04-17",
         published: "2018-09-25",
         usedFor: "2017–2021 EA: CT1–CT9 salary schedule (no CT10), Oct 2020 rates carrying into 2022"
       },
       {
+        id: "nt-src-3",
         url: "https://ocpe.nt.gov.au/employment-conditions-appeals-grievances/enterprise-agreement-negotiations/teachers-and-assistant-teachers/bulletin-30",
         accessed: "2026-04-17",
         published: "2023-01-30",
         usedFor: "2021–2024 EA: FWC approval 11 Jan 2023, 3% rises Oct 2021/2022/2023, back-pay in Feb 2023"
       },
       {
+        id: "nt-src-4",
         url: "https://teachintheterritory.nt.gov.au/pay-and-benefits",
         accessed: "2026-04-17",
         published: "not stated",
         usedFor: "Cross-verification of Jan 2026 CT1–CT9 rates"
       }
     ]
+  }
+];
+
+// =============================== CHANGELOG ===============================
+// Running log of material data changes. Each entry covers one jurisdiction.
+// Append new entries at the top (most recent first).
+window.CHANGELOG = [
+  {
+    date: "2026-05-18",
+    jurisdiction: "VIC",
+    summary: "Added in-principle VGSA 2026 projected rates (Oct 2026–2029). Headline 28.3% over 4 years; ~12% combined rise by Oct 2026 including structural adjustments (+$12,343 graduate to align with NSW; +$15,393 top). Top of scale to reach $151,419 by 2029. Pending member ballot — ratification not yet confirmed."
+  },
+  {
+    date: "2026-05-18",
+    jurisdiction: "QLD",
+    summary: "Updated to EB11 (endorsed via member ballot 26 Feb–12 Mar 2026). Graduate starting rate raised one pay-point to $90,833 from 1 Jan 2026 (backdated). EA status changed from expired-in-negotiation to current; new commenced/expiry dates set."
+  },
+  {
+    date: "2026-05-18",
+    jurisdiction: "TAS",
+    summary: "Updated to Teachers Agreement 2026 (ratified 26 Apr 2026, 72% yes vote). Added 3% / 3% / 2.75% rises from first full pay period in March 2026, 2027, and 2028. $500 lump sum added to Band 1 L13 base before the first rise (compounds). EA status changed to current."
+  },
+  {
+    date: "2026-05-18",
+    jurisdiction: "WA",
+    summary: "Switched top-of-scale from L3.3 to L3.2. L3.3 is role-contingent (assigned at 'identified schools in need'), not a universal classroom-teacher step. Recalculated all WA top schedule entries: Dec 2023 $132,143 → Dec 2024 $137,428 → Dec 2025 $141,551."
+  },
+  {
+    date: "2026-05-18",
+    jurisdiction: "SA",
+    summary: "Corrected Tier 9 classification note: progression requires a competency-based application after reaching Tier 8 — not automatic. Corrected all SA classification labels from 'Band 1' / 'Step X' to 'Tier X' to match 2024 EA terminology."
   }
 ];
