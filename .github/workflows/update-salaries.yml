@@ -1,0 +1,55 @@
+name: Refresh salary data
+
+on:
+  schedule:
+    # 02:00 UTC on the 1st of every month (12:00 / 13:00 AEST).
+    - cron: '0 2 1 * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Agent SDK
+        run: npm install -g @anthropic-ai/claude-agent-sdk
+
+      - name: Run research agent
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TODAY: ${{ github.event.repository.updated_at }}
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          export TODAY
+          # Substitute {{TODAY}} in the prompt, then pipe to claude.
+          sed "s/{{TODAY}}/$TODAY/g" .github/prompts/update-salaries.md \
+            | claude \
+                --print \
+                --permission-mode acceptEdits \
+                --allowed-tools "Read,Edit,WebFetch,WebSearch"
+
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: refresh/salary-data
+          title: "Monthly salary data refresh"
+          commit-message: "Refresh salary data"
+          body: |
+            Automated monthly refresh of `data.js`.
+
+            **Review checklist before merging**
+            - [ ] Spot-check current rates against each jurisdiction's source URL
+            - [ ] Any new EAs signed/approved since last run?
+            - [ ] `ea.status` values still accurate?
+            - [ ] `accessed` dates updated on sources the agent actually visited
+            - [ ] `DATA_AS_OF` reflects today
+            - [ ] No invented figures — if a source is unreachable, the agent should leave data untouched and add a note

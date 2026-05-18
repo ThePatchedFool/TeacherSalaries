@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Australian Public School Teacher Salaries — State &amp; Territory Comparison</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>Australian Public School Teacher Salaries</h1>
+  <p class="subtitle">Base FTE salaries for graduate and top-of-scale classroom teachers across Australia's eight state and territory public school systems.</p>
+  <nav>
+    <a href="#summary">Summary</a>
+    <a href="#projections">Projections</a>
+    <a href="#details">Jurisdiction detail</a>
+    <a href="#methodology">Methodology</a>
+  </nav>
+</header>
+
+<main>
+
+<section id="summary">
+  <h2>Summary table</h2>
+  <p class="hint">Click any column header to sort. Click again to reverse.</p>
+  <div class="table-wrap">
+    <table id="summary-table">
+      <thead>
+        <tr>
+          <th data-sort="name">Jurisdiction</th>
+          <th data-sort="graduate" class="num">Graduate salary (2026)</th>
+          <th data-sort="top" class="num">Top-of-scale classroom teacher (2026)</th>
+          <th data-sort="gap" class="num">Gap (top − graduate)</th>
+          <th data-sort="expiry">Current EA nominal expiry</th>
+          <th data-sort="status">EA status</th>
+        </tr>
+      </thead>
+      <tbody><!-- populated by script.js --></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="projections">
+  <h2>Salary projections</h2>
+  <p class="hint">Solid line = rates under an EA (including agreed future increases, up to nominal expiry). Dashed line = rate continuing at the expired-EA level pending a new agreement. Beyond each line, future pay is unknown.</p>
+  <div class="chart-controls">
+    <label><input type="radio" name="chart-series" value="top" checked> Top-of-scale classroom teacher</label>
+    <label><input type="radio" name="chart-series" value="graduate"> Graduate</label>
+  </div>
+  <div class="chart-wrap">
+    <canvas id="projection-chart"></canvas>
+  </div>
+</section>
+
+<section id="details">
+  <h2>Jurisdiction detail</h2>
+  <div id="detail-cards"><!-- populated by script.js --></div>
+</section>
+
+<section id="methodology">
+  <h2>Methodology &amp; caveats</h2>
+  <ul>
+    <li><strong>Base FTE only.</strong> Figures exclude employer superannuation, allowances, and loadings (including NT remote/location loadings, which are a substantial part of actual NT teacher pay).</li>
+    <li><strong>"Top-of-scale classroom teacher"</strong> means the highest step a teacher can reach without promotion to Highly Accomplished Teacher, Lead Teacher, or any equivalent leadership/executive classification. The exact classification used per jurisdiction is noted in each detail card.</li>
+    <li><strong>"Graduate"</strong> means step 1 of the entry-level classroom teacher classification.</li>
+    <li><strong>Projections</strong> show only increases already agreed in each current Enterprise Agreement. When an EA expires, the projection line ends — subsequent pay depends on future bargaining outcomes.</li>
+    <li><strong>EA status labels</strong>:
+      <em>current</em> = in force and not expired;
+      <em>expired-in-negotiation</em> = nominal expiry passed, agreement still operative while new one is negotiated;
+      <em>in-negotiation</em> = new agreement being negotiated before expiry.
+    </li>
+    <li><strong>Every figure is sourced.</strong> Source links and access dates are shown in each jurisdiction's detail card.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>Last updated: <span id="last-updated"></span>. Data compiled from official state/territory education department publications and Enterprise Agreements. This is an independent comparison and not affiliated with any government or union.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
