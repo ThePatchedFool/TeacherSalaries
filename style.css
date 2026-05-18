@@ -858,13 +858,14 @@ a, .src-link, .src-tag, .footnote-ref {
   overflow: hidden;
 }
 /* Collapsible jurisdiction cards */
-.card-collapse > summary.jc-head {
+.card-collapse > summary {
+  list-style: none;
+  display: block;
   cursor: pointer;
   user-select: none;
-  list-style: none;
 }
-.card-collapse > summary.jc-head::-webkit-details-marker { display: none; }
-.card-collapse > summary.jc-head::after {
+.card-collapse > summary::-webkit-details-marker { display: none; }
+.card-collapse > summary .jc-head::after {
   content: "▸";
   font-size: 11px;
   color: var(--ink-3);
@@ -876,9 +877,9 @@ a, .src-link, .src-tag, .footnote-ref {
   margin-left: auto;
   padding-left: 16px;
 }
-.card-collapse[open] > summary.jc-head::after { transform: rotate(90deg); opacity: 0.7; }
-.card-collapse > summary.jc-head:hover::after { opacity: 1; }
-.card-collapse:not([open]) > summary.jc-head { border-bottom: none; }
+.card-collapse[open] > summary .jc-head::after { transform: rotate(90deg); opacity: 0.7; }
+.card-collapse > summary:hover .jc-head::after { opacity: 1; }
+.card-collapse:not([open]) > summary .jc-head { border-bottom: none; }
 
 .jc-head {
   padding: 24px 28px 20px;

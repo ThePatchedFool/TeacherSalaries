@@ -682,12 +682,14 @@
       return `
         <article class="juris-card" id="detail-${j.code}">
           <details class="card-collapse">
-            <summary class="jc-head">
-              <div>
-                <div class="jc-title">${j.name} <span class="code">${j.code}</span></div>
-                <div class="jc-sub">${j.system}</div>
+            <summary>
+              <div class="jc-head">
+                <div>
+                  <div class="jc-title">${j.name} <span class="code">${j.code}</span></div>
+                  <div class="jc-sub">${j.system}</div>
+                </div>
+                ${verifiedStamp}
               </div>
-              ${verifiedStamp}
             </summary>
             <div class="jc-body">
               <div class="jc-meta">
