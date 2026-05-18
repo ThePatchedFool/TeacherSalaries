@@ -956,6 +956,36 @@ a, .src-link, .src-tag, .footnote-ref {
   font-size: 13.5px;
   line-height: 1.4;
 }
+/* Collapsible classifier text — heading stays visible, only the description toggles */
+.classifier-collapse {
+  margin-bottom: 14px;
+}
+.classifier-collapse > summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+}
+.classifier-collapse > summary::-webkit-details-marker { display: none; }
+.classifier-collapse > summary::after {
+  content: "▸";
+  font-size: 9px;
+  opacity: 0.5;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+.classifier-collapse[open] > summary::after { transform: rotate(90deg); }
+.classifier-collapse > summary:hover { color: var(--ink); }
+.classifier-collapse > summary:hover::after { opacity: 1; }
+.classifier-collapse .jc-classifier { margin-top: 8px; }
+
 .jc-classifier {
   font-family: var(--serif);
   font-style: italic;

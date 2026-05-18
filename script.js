@@ -481,8 +481,10 @@
         stepped: "before"
       });
 
-      // Dashed post-expiry extension
-      if (todayTime > expiryTime) {
+      // Dashed post-expiry extension — only when the schedule has no future
+      // agreed entries that already cover the post-expiry period (e.g. VIC
+      // has in-principle rates through 2029 and needs no dashed extension).
+      if (todayTime > expiryTime && lastTime <= todayTime) {
         datasets.push({
           label: j.code + " (post-expiry)",
           data: [
@@ -508,6 +510,7 @@
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        layout: { padding: { top: 24 } },
         interaction: { mode: "nearest", axis: "x", intersect: false },
         plugins: {
           legend: { display: false },
@@ -702,13 +705,17 @@
               </dl>
             </div>
             <div>
-              <div class="jc-col-label">Graduate</div>
-              <div class="jc-classifier">${j.graduate.classification}</div>
+              <details class="classifier-collapse">
+                <summary>Graduate</summary>
+                <div class="jc-classifier">${j.graduate.classification}</div>
+              </details>
               <div class="salary-rows">${salaryRowsHtml(j.graduate.schedule, gradCurrent)}</div>
             </div>
             <div>
-              <div class="jc-col-label">Top-of-scale classroom teacher</div>
-              <div class="jc-classifier">${j.top.classification}</div>
+              <details class="classifier-collapse">
+                <summary>Top-of-scale classroom teacher</summary>
+                <div class="jc-classifier">${j.top.classification}</div>
+              </details>
               <div class="salary-rows">${salaryRowsHtml(j.top.schedule, topCurrent)}</div>
             </div>
           </div>
