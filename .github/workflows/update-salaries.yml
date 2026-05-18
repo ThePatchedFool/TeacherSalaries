@@ -14,6 +14,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  id-token: write
 
 jobs:
   refresh:
@@ -49,7 +50,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: ${{ steps.prompt.outputs.content }}
-          allowed_tools: 'Read,Edit,WebFetch,WebSearch'
+          claude_args: '--allowedTools "Read,Edit,WebFetch,WebSearch"'
 
       # create-pull-request is a no-op if data.js wasn't modified.
       - name: Open pull request
