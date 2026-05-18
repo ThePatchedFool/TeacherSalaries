@@ -621,7 +621,7 @@
       const gradCurrent = currentRowIdx(j.graduate.schedule);
       const topCurrent  = currentRowIdx(j.top.schedule);
 
-      const NOTE_THRESHOLD = 50;
+      const NOTE_THRESHOLD = 60;
 
       function salaryRowsHtml(schedule, currentIdx) {
         return schedule.map((row, i) => {
