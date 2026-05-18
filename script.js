@@ -621,6 +621,8 @@
       const gradCurrent = currentRowIdx(j.graduate.schedule);
       const topCurrent  = currentRowIdx(j.top.schedule);
 
+      const NOTE_THRESHOLD = 60;
+
       function salaryRowsHtml(schedule, currentIdx) {
         return schedule.map((row, i) => {
           const isCurrent = i === currentIdx;
@@ -628,9 +630,18 @@
           const footnote  = srcNum
             ? `<a class="footnote-ref" href="#${row.sourceId}" title="Source ${srcNum}">[${srcNum}]</a>`
             : "";
-          const noteEl = row.increase
-            ? `<span class="note">${row.increase}</span>`
-            : `<span></span>`;
+          let noteEl;
+          if (!row.increase) {
+            noteEl = `<span></span>`;
+          } else if (row.increase.length > NOTE_THRESHOLD) {
+            const short = row.increase.slice(0, NOTE_THRESHOLD).trimEnd();
+            noteEl = `<span class="note note-collapsible">
+              <span class="note-short">${short}&#8230;&thinsp;<button class="note-toggle" aria-expanded="false">More</button></span>
+              <span class="note-full" hidden>${row.increase}&thinsp;<button class="note-toggle" aria-expanded="true">Less</button></span>
+            </span>`;
+          } else {
+            noteEl = `<span class="note">${row.increase}</span>`;
+          }
           return `
             <div class="salary-row${isCurrent ? " current" : ""}">
               <span class="dt">${fmtDate(row.date)}</span>
@@ -731,6 +742,26 @@
   }
 
   buildCards();
+
+  // Note expand/collapse — event delegation on the cards container.
+  document.getElementById("detail-cards").addEventListener("click", (e) => {
+    const btn = e.target.closest(".note-toggle");
+    if (!btn) return;
+    const collapsible = btn.closest(".note-collapsible");
+    if (!collapsible) return;
+    const short = collapsible.querySelector(".note-short");
+    const full  = collapsible.querySelector(".note-full");
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    if (expanded) {
+      // "Less" was clicked — collapse
+      full.hidden  = true;
+      short.hidden = false;
+    } else {
+      // "More" was clicked — expand
+      short.hidden = true;
+      full.hidden  = false;
+    }
+  });
 
   // =====================================================================
   // Phase 8 — Provenance section
