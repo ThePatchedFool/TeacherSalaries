@@ -681,46 +681,48 @@
 
       return `
         <article class="juris-card" id="detail-${j.code}">
-          <div class="jc-head">
-            <div>
-              <div class="jc-title">${j.name} <span class="code">${j.code}</span></div>
-              <div class="jc-sub">${j.system}</div>
+          <details class="card-collapse">
+            <summary class="jc-head">
+              <div>
+                <div class="jc-title">${j.name} <span class="code">${j.code}</span></div>
+                <div class="jc-sub">${j.system}</div>
+              </div>
+              ${verifiedStamp}
+            </summary>
+            <div class="jc-body">
+              <div class="jc-meta">
+                <div class="jc-col-label">Agreement</div>
+                <dl>
+                  <div><dt>Current EA</dt><dd>${j.ea.name}</dd></div>
+                  <div>
+                    <dt>Status</dt>
+                    <dd><span class="status-pill ${STATUS_CLASS[j.ea.status] || ""}">
+                      ${STATUS_LABEL[j.ea.status] || j.ea.status}
+                    </span></dd>
+                  </div>
+                  <div><dt>Commenced</dt><dd>${fmtDate(j.ea.commenced)}</dd></div>
+                  <div><dt>Nominal expiry</dt><dd>${fmtDate(j.ea.expires)}</dd></div>
+                  ${pubRow}
+                </dl>
+              </div>
+              <div>
+                <details class="classifier-collapse">
+                  <summary>Graduate</summary>
+                  <div class="jc-classifier">${j.graduate.classification}</div>
+                </details>
+                <div class="salary-rows">${salaryRowsHtml(j.graduate.schedule, gradCurrent)}</div>
+              </div>
+              <div>
+                <details class="classifier-collapse">
+                  <summary>Top-of-scale classroom teacher</summary>
+                  <div class="jc-classifier">${j.top.classification}</div>
+                </details>
+                <div class="salary-rows">${salaryRowsHtml(j.top.schedule, topCurrent)}</div>
+              </div>
             </div>
-            ${verifiedStamp}
-          </div>
-          <div class="jc-body">
-            <div class="jc-meta">
-              <div class="jc-col-label">Agreement</div>
-              <dl>
-                <div><dt>Current EA</dt><dd>${j.ea.name}</dd></div>
-                <div>
-                  <dt>Status</dt>
-                  <dd><span class="status-pill ${STATUS_CLASS[j.ea.status] || ""}">
-                    ${STATUS_LABEL[j.ea.status] || j.ea.status}
-                  </span></dd>
-                </div>
-                <div><dt>Commenced</dt><dd>${fmtDate(j.ea.commenced)}</dd></div>
-                <div><dt>Nominal expiry</dt><dd>${fmtDate(j.ea.expires)}</dd></div>
-                ${pubRow}
-              </dl>
-            </div>
-            <div>
-              <details class="classifier-collapse">
-                <summary>Graduate</summary>
-                <div class="jc-classifier">${j.graduate.classification}</div>
-              </details>
-              <div class="salary-rows">${salaryRowsHtml(j.graduate.schedule, gradCurrent)}</div>
-            </div>
-            <div>
-              <details class="classifier-collapse">
-                <summary>Top-of-scale classroom teacher</summary>
-                <div class="jc-classifier">${j.top.classification}</div>
-              </details>
-              <div class="salary-rows">${salaryRowsHtml(j.top.schedule, topCurrent)}</div>
-            </div>
-          </div>
-          ${notesHtml}
-          ${sourcesHtml}
+            ${notesHtml}
+            ${sourcesHtml}
+          </details>
         </article>
       `;
     }).join("");
