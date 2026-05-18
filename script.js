@@ -296,6 +296,15 @@
     });
   });
 
-  // ---- Footer ----------------------------------------------------------
-  document.getElementById("last-updated").textContent = fmtDate(TODAY);
+  // ---- Colophon / footer -----------------------------------------------
+  const totalSources = data.reduce((n, j) => n + j.sources.length, 0);
+
+  const elLastUpdated = document.getElementById("last-updated");
+  if (elLastUpdated) elLastUpdated.textContent = fmtDate(TODAY);
+
+  const elSourceCount = document.getElementById("source-count");
+  if (elSourceCount) elSourceCount.textContent = totalSources;
+
+  const elFooterDate = document.getElementById("footer-last-updated");
+  if (elFooterDate) elFooterDate.textContent = fmtDate(TODAY);
 })();
