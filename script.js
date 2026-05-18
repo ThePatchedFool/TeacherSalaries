@@ -378,7 +378,7 @@
 
     panel.innerHTML = `
       <div class="cp-head">
-        <h3>Side-by-side comparison</h3>
+        <h3>Comparison</h3>
         <button class="cp-close" aria-label="Close comparison">×</button>
       </div>
       <div class="cp-grid">
