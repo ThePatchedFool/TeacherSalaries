@@ -42,7 +42,7 @@
   </div>
 </header>
 
-<!-- ====== STICKY COMPARISON BAR (stub — wired in Phase 5) ====== -->
+<!-- ====== STICKY COMPARISON BAR ====== -->
 <div class="cmp-bar hidden" id="cmpBar">
   <div class="row-flex">
     <span class="cmp-bar-label">Comparing</span>
@@ -57,16 +57,22 @@
     <h2>Summary</h2>
     <span class="sec-meta">Click any header to sort</span>
   </div>
+
+  <!-- compare panel (shown when 2+ jurisdictions selected) -->
+  <div class="compare-panel" id="comparePanel"></div>
+
   <div class="table-wrap">
     <table id="summary-table" class="salary-table">
       <thead>
         <tr>
+          <th class="check"></th>
           <th data-sort="name">Jurisdiction <span class="sort-ind">↕</span></th>
           <th data-sort="graduate" class="num">Graduate (2026) <span class="sort-ind">↕</span></th>
           <th data-sort="top" class="num">Top-of-scale (2026) <span class="sort-ind">↕</span></th>
           <th data-sort="gap" class="num">Gap <span class="sort-ind">↕</span></th>
-          <th data-sort="expiry">EA expiry <span class="sort-ind">↕</span></th>
+          <th data-sort="expiry">EA timeline <span class="sort-ind">↕</span></th>
           <th data-sort="status">Status <span class="sort-ind">↕</span></th>
+          <th>Sources</th>
         </tr>
       </thead>
       <tbody><!-- populated by script.js --></tbody>
@@ -80,11 +86,8 @@
     <h2>Salary projections</h2>
   </div>
   <p class="sec-sub">Solid line = agreed rates to nominal EA expiry. Dashed = rate held at the last agreed figure after expiry, until a new agreement is reached.</p>
-  <div class="chart-controls">
-    <label><input type="radio" name="chart-series" value="top" checked> Top-of-scale classroom teacher</label>
-    <label><input type="radio" name="chart-series" value="graduate"> Graduate</label>
-  </div>
   <div class="chart-shell">
+    <div class="chart-toolbar" id="chart-toolbar"><!-- populated by script.js --></div>
     <canvas id="projection-chart"></canvas>
   </div>
 </section>
@@ -97,12 +100,13 @@
   <div id="detail-cards" class="juris-grid"><!-- populated by script.js --></div>
 </section>
 
-<!-- ====== PROVENANCE (stub — populated in Phase 8) ====== -->
+<!-- ====== PROVENANCE ====== -->
 <section id="provenance">
   <div class="sec-head">
     <h2>Provenance</h2>
   </div>
-  <p class="sec-sub">Data freshness and recent changes. Full source citations appear within each jurisdiction's detail card above.</p>
+  <p class="sec-sub">Data freshness and a log of recent changes. Full source citations appear within each jurisdiction's detail card above.</p>
+  <!-- content populated by script.js -->
 </section>
 
 <!-- ====== METHODOLOGY ====== -->
@@ -125,7 +129,7 @@
     </div>
     <div class="method-item">
       <h4>Projections</h4>
-      <p>Show only increases already agreed in each current Enterprise Agreement. When an EA expires, the projection line ends — subsequent pay depends on future bargaining outcomes.</p>
+      <p>Show only increases already agreed in each current Enterprise Agreement. When an EA expires, the projection line ends — subsequent pay depends on future bargaining outcomes. Where an in-principle agreement is not yet ratified, projected rates are shown with a note.</p>
     </div>
     <div class="method-item">
       <h4>EA status labels</h4>
@@ -133,7 +137,7 @@
     </div>
     <div class="method-item">
       <h4>Sources</h4>
-      <p>Every figure is sourced. Source links and access dates are shown in each jurisdiction's detail card and in the Provenance section above.</p>
+      <p>Every salary figure is linked to the specific Enterprise Agreement, award document, or government rate sheet it was drawn from. Source links with access dates appear in each jurisdiction's detail card and are listed collectively in the Provenance section.</p>
     </div>
   </div>
 </section>
@@ -159,6 +163,7 @@
       <div>
         <h5>Data</h5>
         <p>Last updated: <span id="footer-last-updated"></span></p>
+        <!-- download button injected by script.js -->
       </div>
     </div>
     <p class="foot-copy">Data compiled from official state/territory education department publications and Enterprise Agreements.</p>
