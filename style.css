@@ -639,6 +639,42 @@ footer a:hover { color: var(--ink); }
    Responsive
    ============================================================ */
 /* ============================================================
+   Phase 11 — Polish
+   ============================================================ */
+
+/* Keyboard focus rings */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+button:focus-visible, input:focus-visible { outline-offset: 3px; }
+
+/* Scroll margin so section anchors clear the sticky topbar */
+section[id], article[id], li[id] {
+  scroll-margin-top: 64px;
+}
+
+/* Smoother link colour transitions */
+a, .src-link, .src-tag, .footnote-ref {
+  transition: color 0.1s, border-color 0.1s;
+}
+
+/* Tabular numerals throughout */
+.salary-table, .jc-meta dd, .colophon { font-variant-numeric: tabular-nums; }
+
+/* Long EA name in provenance table: cap width and allow wrapping */
+#provenance .salary-table td:nth-child(2) {
+  max-width: 340px;
+}
+
+/* Muted sort indicator on unsorted columns */
+.salary-table thead th .sort-ind {
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+/* ============================================================
    Phase 4 — Table enhancements
    ============================================================ */
 

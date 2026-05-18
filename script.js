@@ -26,6 +26,12 @@
     return d.toLocaleDateString("en-AU", { month: "short", year: "numeric" });
   };
 
+  // Render **bold** markers in EA notes text.
+  function renderMd(text) {
+    if (!text) return "";
+    return text.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+  }
+
   const STATUS_LABEL = {
     "current":                "Current",
     "expired-in-negotiation": "Expired, in negotiation",
@@ -92,14 +98,52 @@
   }
 
   // =====================================================================
+  // Phase 10 — URL hash state
+  // =====================================================================
+
+  let sortKey      = "name";
+  let sortDir      = 1;
+  let filterStatus = "all";
+  let chartSeries  = "top";
+  const selectedCodes = new Set();
+
+  const VALID_SORT_KEYS = new Set(["name","graduate","top","gap","expiry","status"]);
+  const VALID_FILTERS   = new Set(["all","current","expired"]);
+  const VALID_SERIES    = new Set(["top","graduate"]);
+  const validCodes      = new Set(data.map(j => j.code));
+
+  function readHash() {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    const p = new URLSearchParams(hash);
+    if (p.has("s")   && VALID_SORT_KEYS.has(p.get("s")))   sortKey      = p.get("s");
+    if (p.has("d")   && (p.get("d") === "1" || p.get("d") === "-1")) sortDir = parseInt(p.get("d"), 10);
+    if (p.has("f")   && VALID_FILTERS.has(p.get("f")))     filterStatus = p.get("f");
+    if (p.has("c")   && VALID_SERIES.has(p.get("c")))      chartSeries  = p.get("c");
+    if (p.has("sel")) {
+      p.get("sel").split(",").filter(c => validCodes.has(c)).forEach(c => selectedCodes.add(c));
+    }
+  }
+
+  function writeHash() {
+    const p = new URLSearchParams();
+    if (sortKey !== "name")      p.set("s", sortKey);
+    if (sortDir !== 1)           p.set("d", String(sortDir));
+    if (filterStatus !== "all")  p.set("f", filterStatus);
+    if (chartSeries !== "top")   p.set("c", chartSeries);
+    if (selectedCodes.size)      p.set("sel", [...selectedCodes].join(","));
+    const str = p.toString();
+    history.replaceState(null, "", str ? "#" + str : window.location.pathname + window.location.search);
+  }
+
+  // Read hash before any rendering so initial state is correct.
+  readHash();
+
+  // =====================================================================
   // Phase 4 — Summary table
   // =====================================================================
 
   const tbody = document.querySelector("#summary-table tbody");
-  let sortKey    = "name";
-  let sortDir    = 1;
-  let filterStatus = "all";
-  const selectedCodes = new Set();
 
   // ---- Filter buttons -------------------------------------------------
 
@@ -108,10 +152,11 @@
     if (!secHead) return;
     const fg = document.createElement("div");
     fg.className = "filter-group";
+    const mkOn = (f) => filterStatus === f ? " class=\"on\"" : "";
     fg.innerHTML = `
-      <button class="on" data-f="all">All</button>
-      <button data-f="current">Current EAs</button>
-      <button data-f="expired">Expired</button>
+      <button${mkOn("all")} data-f="all">All</button>
+      <button${mkOn("current")} data-f="current">Current EAs</button>
+      <button${mkOn("expired")} data-f="expired">Expired</button>
     `;
     fg.querySelectorAll("button").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -119,6 +164,7 @@
         fg.querySelectorAll("button").forEach(b => b.classList.remove("on"));
         btn.classList.add("on");
         renderTable();
+        writeHash();
       });
     });
     secHead.appendChild(fg);
@@ -207,6 +253,7 @@
         renderTable();
         updateCmpBar();
         renderComparePanel();
+        writeHash();
       });
     });
 
@@ -225,6 +272,7 @@
       sortDir = key === sortKey ? -sortDir : 1;
       sortKey = key;
       renderTable();
+      writeHash();
     });
   });
 
@@ -257,6 +305,7 @@
         renderTable();
         updateCmpBar();
         renderComparePanel();
+        writeHash();
       });
     });
   }
@@ -374,7 +423,7 @@
   const hiddenCodes = new Set();
   const chartCtx = document.getElementById("projection-chart").getContext("2d");
   let chart = null;
-  let chartSeries = "top";
+  // chartSeries is declared in Phase 10 state block; default already set there
 
   // Custom plugin: vertical "Today" line
   const todayLinePlugin = {
@@ -531,6 +580,7 @@
         toolbar.querySelectorAll("#metricSeg button").forEach(b => b.classList.remove("on"));
         btn.classList.add("on");
         buildChart(btn.dataset.metric);
+        writeHash();
       });
     });
 
@@ -598,7 +648,7 @@
         </span>` : "";
 
       const notesHtml = j.ea.notes
-        ? `<div class="jc-notes"><b>Notes.</b> ${j.ea.notes}</div>`
+        ? `<div class="jc-notes"><b>Notes.</b> ${renderMd(j.ea.notes)}</div>`
         : "";
 
       const pubRow = j.ea.published
@@ -804,6 +854,26 @@
   }
 
   buildDownloads();
+
+  // =====================================================================
+  // Phase 10 — popstate (browser back/forward restores hash state)
+  // =====================================================================
+
+  window.addEventListener("popstate", () => {
+    // Reset to defaults, then re-read hash
+    sortKey = "name"; sortDir = 1; filterStatus = "all"; chartSeries = "top";
+    selectedCodes.clear(); hiddenCodes.clear();
+    readHash();
+    // Re-sync filter buttons
+    document.querySelectorAll(".filter-group button").forEach(b => {
+      b.classList.toggle("on", b.dataset.f === filterStatus);
+    });
+    renderTable();
+    updateCmpBar();
+    renderComparePanel();
+    renderChartToolbar();
+    buildChart(chartSeries);
+  });
 
   // =====================================================================
   // Colophon / footer
