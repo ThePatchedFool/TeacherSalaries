@@ -15,7 +15,7 @@
 //   - schedule[].sourceId — points to the source that documents that salary figure
 //   - window.CHANGELOG  — running log of material data changes
 
-window.DATA_AS_OF = "2026-05-19";
+window.DATA_AS_OF = "2026-05-20";
 
 window.SALARY_DATA = [
 
@@ -108,7 +108,7 @@ window.SALARY_DATA = [
       commenced: "2022-07-25",
       expires: "2025-12-31",
       published: "2022-07-18",
-      notes: "Nominally expired 31 Dec 2025. **In-principle VGSA 2026 reached** and endorsed by AEU Joint Primary and Secondary Sector Council on 15 May 2026 — pending member ballot. Ballot timeline (per AEU Vic): in-person regional meetings over four weeks from Tuesday 19 May 2026, online statewide briefings as alternative, online member vote in the week of 15–18 June 2026 (close 18 June 2026, result communicated shortly after). 39% of delegates voted against endorsement at the 15 May council, so the all-staff ballot is not a foregone conclusion. Headline: 28.3% over 4 years for teachers and principals, beginning with a ~12% combined rise by October 2026 that includes structural adjustments at entry and top steps (+$12,343 for graduate, bringing T1-1 into line with NSW; +$15,393 for T2-6, taking it ahead of NSW). Top of scale to reach $151,419 by 2029. Until member ratification, VGSA 2022 remains legally operative; the schedule entries from Oct 2026 onwards reflect the in-principle deal and are subject to change. Prior path: AEU claim 35% / 3 yrs; government offer of 17% / 4 yrs tabled 17 Mar 2026 was rejected, triggering the first state-wide teacher strike in 13 years on 24 Mar 2026."
+      notes: "Nominally expired 31 Dec 2025. **In-principle VGSA 2026 reached** and endorsed by AEU Joint Primary and Secondary Sector Council on 15 May 2026 — pending member ballot. Ballot timeline (per AEU Vic): in-person regional meetings over four weeks from Tuesday 19 May 2026, online statewide briefings as alternative, online member vote in the week of 15–18 June 2026 (close 18 June 2026, result communicated shortly after). Headline: 28.3% over 4 years for teachers and principals, beginning with a ~12% combined rise by October 2026 that includes structural adjustments at entry and top steps (+$12,343 for graduate, bringing T1-1 into line with NSW; +$15,393 for T2-6, taking it ahead of NSW). Top of scale to reach $151,419 by 2029. Until member ratification, VGSA 2022 remains legally operative; the schedule entries from Oct 2026 onwards reflect the in-principle deal and are subject to change. Prior path: AEU claim 35% / 3 yrs; government offer of 17% / 4 yrs tabled 17 Mar 2026 was rejected, triggering the first state-wide teacher strike in 13 years on 24 Mar 2026."
     },
     graduate: {
       classification: "Classroom Teacher Range 1 Subdivision 1 (T1-1)",
@@ -632,6 +632,11 @@ window.SALARY_DATA = [
 // Append new entries at the top (most recent first).
 window.CHANGELOG = [
   {
+    date: "2026-05-20",
+    jurisdiction: "VIC",
+    summary: "Removed a hallucinated figure introduced by the 18 May automated refresh: the claim that '39% of delegates voted against endorsement at the 15 May 2026 council' had no real source — the 39% figure is from a March 2022 Red Flag article about the *VGSA 2022* ratification vote, four years earlier, and was conflated with the 15 May 2026 in-principle endorsement. Stripped from both ea.notes and the corresponding 18 May CHANGELOG entry."
+  },
+  {
     date: "2026-05-19",
     jurisdiction: "TAS",
     summary: "Changed top-of-scale classification from Band 1 Level 13 to Advanced Skills Teacher Band 2 Level 3 (AST). Aligns TAS with the locked-in cross-jurisdictional methodology. Current AST rate of $125,464 verified per DECYP Salary Scales (23 Mar 2026); pre-2026 AST historical rates calculated by applying the same Band 1 EA % rises (flagged in each schedule row as 'calculated') — should be re-verified against archived salary scales when convenient."
@@ -659,7 +664,7 @@ window.CHANGELOG = [
   {
     date: "2026-05-18",
     jurisdiction: "VIC",
-    summary: "Added in-principle VGSA 2026 projected rates (Oct 2026–2029). Headline 28.3% over 4 years; ~12% combined rise by Oct 2026 including structural adjustments (+$12,343 graduate to align with NSW; +$15,393 top). Top of scale to reach $151,419 by 2029. Pending member ballot — ratification not yet confirmed (in-person meetings from 19 May 2026; online vote week of 15–18 June 2026; 39% of delegates voted against endorsement at the 15 May council, so the ballot is not a foregone conclusion)."
+    summary: "Added in-principle VGSA 2026 projected rates (Oct 2026–2029). Headline 28.3% over 4 years; ~12% combined rise by Oct 2026 including structural adjustments (+$12,343 graduate to align with NSW; +$15,393 top). Top of scale to reach $151,419 by 2029. Pending member ballot — ratification not yet confirmed (in-person meetings from 19 May 2026; online vote week of 15–18 June 2026)."
   },
   {
     date: "2026-05-18",

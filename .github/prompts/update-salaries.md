@@ -64,6 +64,7 @@ You are refreshing the Australian public-school teacher salaries dataset in this
 ## Hard rules
 
 - **Never invent figures.** If a source URL 404s, is paywalled, or you can't confidently extract a number, **leave the existing value unchanged** and append a short note to `ea.notes` flagging it for human review (e.g. `"2026-05-01: NSW DoE salary page moved, rate unverified this run."`).
+- **Never cite a percentage, vote count, or quoted figure without a current dated source.** Before writing a sentence like "39% of delegates voted against X at the Y council," you must have a URL from a primary source (union page, government statement, news article published *after* the event) that contains that figure and refers to *that specific event*. Old percentages from prior EA votes are not transferable to new EA votes — they're different events with different numbers. If you can't ground the figure in a fresh dated source, **leave it out**.
 - **Do not restructure the schema.** No new top-level fields, no renaming. Only update values and append to `schedule` / `sources` / `CHANGELOG`.
 - **Do not delete historical schedule entries.** Past rates stay even if the source page no longer shows them.
 - **Base FTE only.** Exclude super, allowances, NT remote loadings.
