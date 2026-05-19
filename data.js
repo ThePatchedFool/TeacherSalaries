@@ -15,7 +15,7 @@
 //   - schedule[].sourceId — points to the source that documents that salary figure
 //   - window.CHANGELOG  — running log of material data changes
 
-window.DATA_AS_OF = "2026-05-18";
+window.DATA_AS_OF = "2026-05-19";
 
 window.SALARY_DATA = [
 
@@ -195,23 +195,21 @@ window.SALARY_DATA = [
     code: "QLD",
     name: "Queensland",
     system: "Queensland Department of Education",
-    verifiedOn: "2026-05-18",
+    verifiedOn: "2026-05-19",
     ea: {
-      name: "Department of Education State School Teachers' Certified Agreement 2026 (EB11)",
-      status: "current",
-      commenced: "2026-03-13",
-      expires: "2029-03-12",
-      published: "2026-03-13",
-      notes: "**EB11 endorsed via member ballot 26 Feb – 12 Mar 2026** after the earlier 31 Oct 2025 rejection; teachers' agreement endorsed shortly after the support-staff terms were locked in on 13 Mar 2026. Headline: 8% over 3 years plus conditional CPI top-up of up to 10.5% cumulative (up to 0.5% in year 1; up to 1% in years 2 and 3). Structural change: beginning-teacher starting rate raised one pay-point to $90,833 from Jan 2026 (backdated). A new Experienced Senior Teacher Step 3 (EST3) is introduced from Jul 2027 (~$132,033) with the service requirement to reach it reduced from 3 to 2 years — top-of-scale entries below remain at EST2 pending the EST3 cutover. QIRC certification pending. Prior agreement: DoE State School Teachers' CA 2022 (nominally expired 30 Jun 2025)."
+      name: "Department of Education State School Teachers' Certified Agreement 2022",
+      status: "expired-in-negotiation",
+      commenced: "2022-07-01",
+      expires: "2025-06-30",
+      published: "2022-12-01",
+      notes: "**CA 2022 nominally expired 30 Jun 2025**; remains operative pending a successor agreement. EB11 negotiations: October 2025 ballot rejected by teachers; the teachers' agreement is currently in **QIRC arbitration**. A separate EB11 tranche covering school support staff (teacher aides) was certified 13 Mar 2026 — earlier versions of this dataset incorrectly conflated that with the teachers' agreement. The proposed structural change to the graduate starting rate (one pay-point uplift to $90,833) was part of the *rejected* teachers' offer and is **not** in effect; graduate teachers remain on Band 2 Step 1. Earlier versions of this dataset also incorrectly used Band 1 Step 1 (the 3-year-trained scale) for graduate teachers — Band 2 Step 1 is the correct 4-year-trained graduate classification. Prior agreement: DoE State School Teachers' CA 2019."
     },
     graduate: {
-      classification: "Band 1 Step 1 (4-year-trained graduate). Under EB11 (Jan 2026), the entry rate was lifted one pay-point so new graduates effectively start higher than the historical Band 1 Step 1.",
+      classification: "Band 2 Step 1 (4-year-trained graduate entry). Band 1 is the 3-year-trained scale and does not apply to teachers with a four-year degree. Progression Band 2 → Senior Teacher → Experienced Senior Teacher 1 → Experienced Senior Teacher 2 is step-based, with each post-Band-2 step requiring Proficient accreditation plus an Annual Performance Review.",
       schedule: [
-        { date: "2022-01-01", salary: 66556,  increase: "rate in force from 2019 CA (+2.5% eff 1 Jul 2021)", sourceId: "qld-src-2" },
-        { date: "2022-07-01", salary: 69218,  increase: "+4.0% (new 2022 CA)",                                sourceId: "qld-src-3" },
-        { date: "2023-07-01", salary: 71986,  increase: "+4.0%",                                              sourceId: "qld-src-3" },
-        { date: "2024-07-01", salary: 74146,  increase: "+3.0%",                                              sourceId: "qld-src-3" },
-        { date: "2026-01-01", salary: 90833,  increase: "+22.5% — EB11 structural reset, graduate starting rate raised one pay-point (backdated)", sourceId: "qld-src-5" }
+        { date: "2022-07-01", salary: 78490, increase: "Band 2 Step 1 under new 2022 CA",                       sourceId: "qld-src-3" },
+        { date: "2023-07-01", salary: 81628, increase: "+4.0%",                                                 sourceId: "qld-src-3" },
+        { date: "2024-07-01", salary: 84078, increase: "+3.0% (final scheduled increase under CA 2022)",         sourceId: "qld-src-3" }
       ]
     },
     top: {
@@ -242,9 +240,9 @@ window.SALARY_DATA = [
       {
         id: "qld-src-3",
         url: "https://www.qtu.asn.au/salaries-CA2022",
-        accessed: "2026-04-17",
+        accessed: "2026-05-19",
         published: "2023-01-19",
-        usedFor: "Full salary schedule for Band 1 Step 1, Senior Teacher, Experienced Senior Teacher"
+        usedFor: "Full CA 2022 salary schedule: Band 2 Step 1 (graduate, 4-year-trained), Senior Teacher, Experienced Senior Teacher 1 & 2 — every effective date 1 Jul 2022 / 2023 / 2024"
       },
       {
         id: "qld-src-4",
@@ -256,9 +254,9 @@ window.SALARY_DATA = [
       {
         id: "qld-src-5",
         url: "https://statements.qld.gov.au/statements/104690",
-        accessed: "2026-05-18",
+        accessed: "2026-05-19",
         published: "2026-03-13",
-        usedFor: "Ministerial statement confirming EB11 ballot success (26 Feb – 12 Mar 2026); 8% over 3 yrs + CPI top-up; structural changes including new graduate starting rate $90,833 from Jan 2026 and EST3 from Jul 2027"
+        usedFor: "Ministerial statement of 13 Mar 2026: refers to the EB11 **support-staff (teacher aide) tranche** certification, not the teachers' agreement. The teachers' EB11 was rejected at the October 2025 ballot and is in QIRC arbitration. Retained as evidence of the rejected offer's structural terms (graduate +pay-point to $90,833, EST3 from Jul 2027) — none of which are in effect for teachers."
       }
     ]
   },
@@ -268,14 +266,14 @@ window.SALARY_DATA = [
     code: "WA",
     name: "Western Australia",
     system: "Western Australian Department of Education",
-    verifiedOn: "2026-05-18",
+    verifiedOn: "2026-05-19",
     ea: {
       name: "School Education Act Employees' (Teachers and Administrators) General Agreement 2023",
       status: "current",
       commenced: "2024-09-09",
       expires: "2026-12-05",
       published: "2024-11-04",
-      notes: "Registered at WAIRC 4 Nov 2024 with pay increases of 5% / 4% / 3% applied retrospectively from 6 Dec 2023. Final scheduled increase took effect 6 Dec 2025. Successor bargaining: 2026 Log of Claims development was opened by SSTUWA in late 2025 (per September 2025 Western Teacher); no successor offer tabled and no new EA as of 18 May 2026. Nominal expiry 5 Dec 2026 still upcoming. A new Level 3.3 classification was introduced as a role-based uplift (assigned role at 'identified schools in need' with extra duties and release time) paying $147,077 at Dec 2025 — not a universal step, so this comparison uses L3.2 as the top-of-scale. Level 3 overall is portfolio-based, not automatic progression. Prior agreement: 2021 General Agreement (registered 2 Aug 2022, delivered $3,130 flat increases)."
+      notes: "Registered at WAIRC 4 Nov 2024 with pay increases of 5% / 4% / 3% applied retrospectively from 6 Dec 2023. Final scheduled increase took effect 6 Dec 2025. Successor bargaining: 2026 Log of Claims development was opened by SSTUWA in late 2025 (per September 2025 Western Teacher); no successor offer tabled and no new EA as of 19 May 2026. Nominal expiry 5 Dec 2026 still upcoming. **Top-of-scale methodology**: this comparison uses Senior Teacher Classification 2 (ST2), introduced under the 2023 General Agreement effective 6 Dec 2023. ST2 entry requires 12 months at ST1 plus agreement to perform two senior-teacher duties; ST1 entry requires full TRBWA registration, 12 months at the top L2 increment, and one of five Senior Teacher Pathways (PD portfolio, postgraduate qualification, prior equivalent role, mentor role, or HALT certification). Competency-based but not particularly rigorous — broadly comparable in process to SA's Tier 9. Level 3 Classroom Teacher (L3CT) sits above as a portfolio-gated advanced classification (Dec 2025: L3.1 $137,567 / L3.2 $141,551) and Level 3.3 ($147,077) is a role-contingent classification at 'identified schools in need'; both excluded as promotion-equivalent. Pre-Dec 2023 there was no ST2 — single-tier Senior Teacher rates under the 2021 EA are shown for historical continuity. Prior agreement: 2021 General Agreement (registered 2 Aug 2022, delivered $3,130 flat increases)."
     },
     graduate: {
       classification: "Level 2.1 (four-year-trained graduate entry)",
@@ -288,29 +286,29 @@ window.SALARY_DATA = [
       ]
     },
     top: {
-      classification: "Level 3.2 Classroom Teacher — top of the personal-attainment ladder. Progression: Level 2 → L3.1 requires a portfolio assessment (written evidence against five L3CT competencies + 45-minute oral), then L3.1 → L3.2 is a 12-month increment. Level 3.3 sits above (Dec 2025: $147,077) but is a role-contingent classification assigned at 'identified schools in need', not a universal step. Senior Teacher (WA) was abolished; L3CT is the only advanced classroom-teacher stream.",
+      classification: "Senior Teacher Classification 2 (ST2) — introduced under the 2023 General Agreement effective 6 Dec 2023. Progression ST1 → ST2 requires 12 months Continuous Service at ST1 plus agreement to perform two senior-teacher duties (one of which may be contributing to system or school workload reduction initiatives). ST1 eligibility requires full TRBWA registration, 12 months at the top L2 increment, and demonstration via one of five Senior Teacher Pathways. Competency-based but not strictly rigorous — broadly comparable in process to SA's Tier 9. Level 3 Classroom Teacher (L3CT) is a separate portfolio-gated advanced classification (L3.1 / L3.2) with stricter requirements (written evidence against five L3CT competencies + 45-minute oral); L3.3 is role-contingent. Both L3CT and L3.3 excluded as promotion-equivalent. Pre-Dec 2023 there was no ST2 — single-tier Senior Teacher rate (the pre-existing top of the senior pathway under the 2021 EA) is shown for historical continuity.",
       schedule: [
-        { date: "2022-01-01", salary: 122185, increase: "Level 3.2 — top step under 2021 EA",                         sourceId: "wa-src-2" },
-        { date: "2022-12-06", salary: 125850, increase: "+3.0% (Level 3.2)",                                          sourceId: "wa-src-2" },
-        { date: "2023-12-06", salary: 132143, increase: "+5.0% (2023 EA)",                                            sourceId: "wa-src-1" },
-        { date: "2024-12-06", salary: 137428, increase: "+4.0%",                                                      sourceId: "wa-src-1" },
-        { date: "2025-12-06", salary: 141551, increase: "+3.0%",                                                      sourceId: "wa-src-1" }
+        { date: "2022-01-01", salary: 114724, increase: "Senior Teacher (single-tier) under 2021 EA — pre +$3,130 flat. ST2 had not yet been created.", sourceId: "wa-src-2" },
+        { date: "2022-12-06", salary: 117854, increase: "+$3,130 flat under 2021 EA",                                                                   sourceId: "wa-src-2" },
+        { date: "2023-12-06", salary: 125247, increase: "ST2 created under 2023 EA — split from single-tier Senior Teacher, set $1,500 above ST1's +5% rate ($123,747)", sourceId: "wa-src-1" },
+        { date: "2024-12-06", salary: 130257, increase: "+4.0% (ST2)",                                                                                  sourceId: "wa-src-1" },
+        { date: "2025-12-06", salary: 134165, increase: "+3.0% (ST2)",                                                                                  sourceId: "wa-src-1" }
       ]
     },
     sources: [
       {
         id: "wa-src-1",
         url: "https://downloads.wairc.wa.gov.au/agreements/sch013.pdf",
-        accessed: "2026-04-17",
+        accessed: "2026-05-19",
         published: "2024-11-04",
-        usedFor: "2023 EA registered text (canonical)"
+        usedFor: "2023 EA registered text (canonical); clause 14 Senior Teachers and Table 7 salary schedule for ST1 and ST2 (introduced 6 Dec 2023)"
       },
       {
         id: "wa-src-2",
         url: "https://downloads.wairc.wa.gov.au/agreements/sch012.pdf",
         accessed: "2026-04-17",
         published: "2022-08-02",
-        usedFor: "2021 EA: Schedule A Tables 4 & 10 — Level 2.1 and Level 3.2 rates at 6 Dec 2021 and 6 Dec 2022"
+        usedFor: "2021 EA: Schedule A — Level 2.1 graduate rate and pre-ST2 single-tier Senior Teacher rate at 6 Dec 2021 and 6 Dec 2022"
       },
       {
         id: "wa-src-3",
@@ -633,6 +631,16 @@ window.SALARY_DATA = [
 // Running log of material data changes. Each entry covers one jurisdiction.
 // Append new entries at the top (most recent first).
 window.CHANGELOG = [
+  {
+    date: "2026-05-19",
+    jurisdiction: "QLD",
+    summary: "Two corrections. **(1)** Reverted EB11-as-current: the 13 Mar 2026 EB11 certification covered the support-staff (teacher aide) tranche, not the teachers' agreement. Teachers' EB11 was rejected at the Oct 2025 ballot and is currently in QIRC arbitration. Removed the 2026-01-01 'structural reset' row showing $90,833 — that figure was from the rejected offer and is not in effect. EA name, status, commenced/expires/published dates restored to CA 2022 (expired-in-negotiation). **(2)** Fixed graduate classification: the schedule was using Band 1 Step 1 (3-year-trained scale) instead of Band 2 Step 1 (4-year-trained graduate). Replaced with verified Band 2 Step 1 figures from QTU CA 2022 ($78,490 / $81,628 / $84,078)."
+  },
+  {
+    date: "2026-05-19",
+    jurisdiction: "WA",
+    summary: "Changed top-of-scale classification from Level 3.2 to Senior Teacher Classification 2 (ST2). L3CT is portfolio-gated (written evidence + 45-min oral) and closer to a promotion application than an automatic step; ST2 was introduced under the 2023 General Agreement effective 6 Dec 2023 and has lighter competency-based entry criteria (12 months at ST1 + agreement to perform two senior-teacher duties), comparable in process to SA's Tier 9. Top schedule replaced with ST2 figures from the 2023 EA Table 7 ($125,247 / $130,257 / $134,165). Pre-Dec 2023 entries reflect the single-tier Senior Teacher rate that preceded the ST1/ST2 split."
+  },
   {
     date: "2026-05-18",
     jurisdiction: "ACT",
