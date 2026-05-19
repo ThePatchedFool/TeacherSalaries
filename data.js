@@ -400,14 +400,14 @@ window.SALARY_DATA = [
     code: "TAS",
     name: "Tasmania",
     system: "Tasmanian Department for Education, Children and Young People (DECYP)",
-    verifiedOn: "2026-05-18",
+    verifiedOn: "2026-05-19",
     ea: {
       name: "Teachers Agreement 2026 (alongside Teaching Service (Tasmanian Public Sector) Award S197)",
       status: "current",
       commenced: "2026-04-26",
       expires: "2029-03-01",
       published: "2026-04-26",
-      notes: "**Teachers Agreement 2026 ratified 26 Apr 2026** — 72% of AEU Tas members accepted the deal after rolling 24-hour strikes through late March / early April. Delivers 3% / 3% / 2.75% pay rises from the first full pay period in March 2026, March 2027 and March 2028; first rise backdated. Additional: $500 lump added to Band 1 Level 13 base salary BEFORE the first rise (compounds with subsequent rises); new $300/yr Professional Learning allowance for Band 1 L13 and ESS Level 4; meeting-hour caps (80 hrs in 2026, 60 hrs from 2027); 5 days reproductive leave; DV leave expanded 20→25 days; 5 'personal impact days'. Prior agreement: Teachers Agreement 2023 (nominally expired 19 Sep 2025). TAS rate changes operate from the first full pay period commencing on or after 1 March each year."
+      notes: "**Teachers Agreement 2026 ratified 26 Apr 2026** — 72% of AEU Tas members accepted the deal after rolling 24-hour strikes through late March / early April. Delivers 3% / 3% / 2.75% pay rises from the first full pay period in March 2026, March 2027 and March 2028; first rise backdated. Additional: $500 lump added to Band 1 Level 13 base salary BEFORE the first rise (compounds with subsequent rises); new $300/yr Professional Learning allowance for Band 1 L13 and ESS Level 4; meeting-hour caps (80 hrs in 2026, 60 hrs from 2027); 5 days reproductive leave; DV leave expanded 20→25 days; 5 'personal impact days'. Prior agreement: Teachers Agreement 2023 (nominally expired 19 Sep 2025). TAS rate changes operate from the first full pay period commencing on or after 1 March each year. **Top-of-scale methodology**: this comparison uses Advanced Skills Teacher Band 2 Level 3 (AST) — verified current rate $125,464 per the DECYP Salary Scales (23 Mar 2026). AST historical rates pre-Mar-2026 are calculated by applying the same Band 1 EA % rises and should be re-verified against archived salary scales if precision matters; the current snapshot rate is canonical."
     },
     graduate: {
       classification: "Teacher Band 1 Level 5 (4-year-trained graduate entry)",
@@ -423,25 +423,25 @@ window.SALARY_DATA = [
       ]
     },
     top: {
-      classification: "Teacher Band 1 Level 13. Progression from L12 → L13 requires 12 months at L12 plus Full (not Provisional) Teacher Registration from the Tasmanian Teachers Registration Board — the Tasmanian equivalent of Proficient accreditation. Once both are satisfied, the step is effectively automatic. Advanced Skills Teacher Band 2 Level 3 ($125,464) is a selection-based leadership classification and excluded.",
+      classification: "Advanced Skills Teacher Band 2 Level 3 (AST). Selection-based, requires demonstration of advanced classroom-teaching practice; sits above Band 1 Level 13 as the top classroom-teacher classification. Distinct from leadership classifications (Assistant Principal Band 3, Principal). Band 1 Level 13 (Mar 2026 rate: $122,393) is the top of the standard scale below AST. Earlier versions of this dataset used Band 1 Level 13 — corrected 2026-05-19 to align with cross-jurisdictional top-of-scale methodology.",
       schedule: [
-        { date: "2022-01-01", salary: 104313, increase: "rate from 2021 EA",                                  sourceId: "tas-src-2" },
-        { date: "2022-03-03", salary: 106764, increase: "+2.35% (final 2021 EA rise)",                        sourceId: "tas-src-2" },
-        { date: "2023-03-02", salary: 111536, increase: "+4.47% (first 2023 EA rise)",                        sourceId: "tas-src-1" },
-        { date: "2024-02-29", salary: 114882, increase: "+3.0%",                                              sourceId: "tas-src-1" },
-        { date: "2025-02-27", salary: 118328, increase: "+3.0% (final 2023 EA rise)",                         sourceId: "tas-src-1" },
-        { date: "2026-03-05", salary: 122393, increase: "+$500 lump to base, then +3.0% (first 2026 EA rise, backdated)", sourceId: "tas-src-6" },
-        { date: "2027-03-04", salary: 126065, increase: "+3.0%",                                              sourceId: "tas-src-6" },
-        { date: "2028-03-02", salary: 129531, increase: "+2.75% (final scheduled)",                           sourceId: "tas-src-6" }
+        { date: "2022-01-01", salary: 107381, increase: "AST under 2021 EA (calculated — applies Band 1 L13 % rises backwards from verified Mar 2026 rate)", sourceId: "tas-src-1" },
+        { date: "2022-03-03", salary: 109905, increase: "+2.35% (final 2021 EA rise, calculated)",            sourceId: "tas-src-1" },
+        { date: "2023-03-02", salary: 114818, increase: "+4.47% (first 2023 EA rise, calculated)",            sourceId: "tas-src-1" },
+        { date: "2024-02-29", salary: 118262, increase: "+3.0% (calculated)",                                 sourceId: "tas-src-1" },
+        { date: "2025-02-27", salary: 121810, increase: "+3.0% (final 2023 EA rise, calculated)",             sourceId: "tas-src-1" },
+        { date: "2026-03-05", salary: 125464, increase: "+3.0% (first 2026 EA rise, backdated — verified per DECYP scales 23 Mar 2026)", sourceId: "tas-src-1" },
+        { date: "2027-03-04", salary: 129228, increase: "+3.0% (calculated, projected)",                      sourceId: "tas-src-6" },
+        { date: "2028-03-02", salary: 132782, increase: "+2.75% (final scheduled, calculated)",               sourceId: "tas-src-6" }
       ]
     },
     sources: [
       {
         id: "tas-src-1",
         url: "https://publicdocumentcentre.education.tas.gov.au/library/Shared%20Documents/Salary-Scales.pdf",
-        accessed: "2026-04-17",
+        accessed: "2026-05-19",
         published: "2026-03-23",
-        usedFor: "Current DECYP salary scales v1.11 (Teacher Band 1 Levels 1–13, AST)"
+        usedFor: "Current DECYP salary scales (23 Mar 2026): Teacher Band 1 Levels 1–13 and Advanced Skills Teacher Band 2 Level 3 ($125,464). Used as the canonical current rate; pre-2026 AST figures are calculated by applying the same Band 1 EA % rises."
       },
       {
         id: "tas-src-2",
@@ -631,6 +631,11 @@ window.SALARY_DATA = [
 // Running log of material data changes. Each entry covers one jurisdiction.
 // Append new entries at the top (most recent first).
 window.CHANGELOG = [
+  {
+    date: "2026-05-19",
+    jurisdiction: "TAS",
+    summary: "Changed top-of-scale classification from Band 1 Level 13 to Advanced Skills Teacher Band 2 Level 3 (AST). Aligns TAS with the locked-in cross-jurisdictional methodology. Current AST rate of $125,464 verified per DECYP Salary Scales (23 Mar 2026); pre-2026 AST historical rates calculated by applying the same Band 1 EA % rises (flagged in each schedule row as 'calculated') — should be re-verified against archived salary scales when convenient."
+  },
   {
     date: "2026-05-19",
     jurisdiction: "QLD",

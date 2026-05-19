@@ -69,6 +69,43 @@ You are refreshing the Australian public-school teacher salaries dataset in this
 - **Base FTE only.** Exclude super, allowances, NT remote loadings.
 - If a classification is renamed mid-EA (like NSW Band→Step, ACT CT→TL, NT CT1-9→CT1-9+CT10, WA Level 3.2→3.3), record the change in `notes` and in the `increase` field of the affected schedule row — don't silently rewrite old labels.
 
+## Locked-in classifications (do not change without human review)
+
+The top-of-scale and graduate classifications for each jurisdiction are **fixed** as below. Do not switch to a different step/level/tier even if a new EA introduces one or restructures the scale. If a new agreement explicitly renames or restructures the locked classification, flag it in `ea.notes` and leave the existing `classification` field alone — a human will decide whether the lock should change.
+
+| Code | Graduate | Top of scale |
+|---|---|---|
+| NSW | Classroom Teacher Step 1 (Graduate accreditation) | Classroom Teacher Step 7 (Proficient accreditation) |
+| VIC | Classroom Teacher Range 1 Subdivision 1 (T1-1) | Classroom Teacher Range 2 Subdivision 6 (T2-6) |
+| QLD | **Band 2 Step 1** (4-year-trained graduate). Band 1 is the 3-year-trained scale — never use it for graduate teachers. | Experienced Senior Teacher Step 2 (EST2) |
+| WA | Level 2.1 (four-year-trained graduate) | **Senior Teacher Classification 2 (ST2)** — introduced under the 2023 EA. Do **not** use Level 3.2 / L3CT (portfolio-gated, treated as promotion-equivalent). |
+| SA | Teacher Tier 1 | Teacher Tier 9 |
+| TAS | Teacher Band 1 Level 5 | **Advanced Skills Teacher Band 2 Level 3 (AST)**. Do **not** use Band 1 Level 13 — AST is the top classroom-teacher classification. |
+| ACT | Teacher Level 1 (TL1) | Teacher Level 8 (TL8) |
+| NT | Classroom Teacher 1 (CT1) | Classroom Teacher 9 (CT9) |
+
+When a new EA is signed:
+- **Locked classification still exists**: append new rates to the existing schedule under the locked classification. Do not rename the classification.
+- **Locked classification renamed**: flag in `ea.notes` (`"2026-XX-XX: VIC renamed T2-6 to Range 2 Step 6 effective DD MMM YYYY — locked classification still applies, label updated"`) and update the `classification` field text to reflect the new name, but only after confirming the underlying step is functionally the same. Add an `increase` field note to the affected schedule row.
+- **Locked classification abolished or restructured into different tiers**: do **not** silently switch to a different classification. Leave the existing data unchanged, flag prominently in `ea.notes`, and add a CHANGELOG entry asking for human review of the methodology choice.
+
+## Excluded classifications (do not use as top-of-scale)
+
+These are classifications that look like step increments but require selection, portfolio, formal assessment, or carry leadership/promotional duties. Treat them as out of scope for "top classroom teacher":
+
+- **HAT / Highly Accomplished Teacher** — any jurisdiction
+- **LT / Lead Teacher** — any jurisdiction
+- **Learning Specialist** (VIC) / **Leading Teacher** (VIC promotional roles)
+- **WA Level 3 Classroom Teacher (L3.1 / L3.2 / L3.3)** — portfolio assessment + oral examination
+- **QLD HAT-certified positions**
+- **NSW Highly Accomplished Teacher / Lead Teacher** (NESA separate accreditation)
+- **SA Advanced Skills Teacher (AST1)** — separate selection process
+- **TAS Assistant Principal, Principal**
+- **ACT Highly Accomplished Teacher / Lead Teacher / executive classifications**
+- **NT Senior Teacher (ST1–ST8)** — explicitly promotion-based per the EA
+
+When the WA L3CT or similar exists at a higher rate than the locked top-of-scale, note its existence in `ea.notes` but do not include it in the comparison schedule.
+
 ## When you're done
 
 Summarize in bullet points:
