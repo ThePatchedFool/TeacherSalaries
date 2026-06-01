@@ -8,6 +8,10 @@
 // increases, spanning the current EA and any prior EA(s) in force during that window.
 // Initial sources accessed 2026-04-17; refresh on 2026-05-18 captured the in-principle
 // VGSA 2026 (VIC), endorsed EB11 (QLD), and ratified Teachers Agreement 2026 (TAS).
+// 2026-06-01 refresh: no material changes since 2026-05-19 — VIC member ballot remains
+// scheduled for week of 15–18 June 2026; QLD EB11 (teachers) remains in QIRC arbitration;
+// ACT successor offer of 11 Mar 2026 has not progressed to ballot; SA official rate sheet
+// (sa-src-3) returned HTTP 403 again, so May 2026 SA figures remain calculated/unverified.
 //
 // Phase 1 additions (2026-05-18):
 //   - sources[].id      — stable identifier, format "<lowercode>-src-<n>"
@@ -15,7 +19,7 @@
 //   - schedule[].sourceId — points to the source that documents that salary figure
 //   - window.CHANGELOG  — running log of material data changes
 
-window.DATA_AS_OF = "2026-05-20";
+window.DATA_AS_OF = "2026-06-01";
 
 window.SALARY_DATA = [
 
@@ -24,7 +28,7 @@ window.SALARY_DATA = [
     code: "NSW",
     name: "New South Wales",
     system: "NSW Department of Education",
-    verifiedOn: "2026-05-18",
+    verifiedOn: "2026-06-01",
     ea: {
       name: "Crown Employees (Teachers in Schools and Related Employees) Salaries and Conditions Award 2024",
       status: "current",
@@ -61,7 +65,7 @@ window.SALARY_DATA = [
       {
         id: "nsw-src-1",
         url: "https://education.nsw.gov.au/content/dam/main-education/industrial-relations/media/documents/awards/Teachers_Award_2024.pdf",
-        accessed: "2026-05-18",
+        accessed: "2026-06-01",
         published: "2024-11-26",
         usedFor: "2024 Award text: commencement, expiry, Schedule 1A salary figures, classification labels"
       },
@@ -82,7 +86,7 @@ window.SALARY_DATA = [
       {
         id: "nsw-src-4",
         url: "https://education.nsw.gov.au/teach-nsw/explore-teaching/salary-of-a-teacher",
-        accessed: "2026-05-18",
+        accessed: "2026-06-01",
         published: "2025-12-09",
         usedFor: "Confirmation of current and scheduled future rates including Oct 2026"
       },
@@ -101,14 +105,14 @@ window.SALARY_DATA = [
     code: "VIC",
     name: "Victoria",
     system: "Victorian Department of Education",
-    verifiedOn: "2026-05-18",
+    verifiedOn: "2026-06-01",
     ea: {
       name: "Victorian Government Schools Agreement 2022 (VGSA 2022)",
       status: "expired-in-negotiation",
       commenced: "2022-07-25",
       expires: "2025-12-31",
       published: "2022-07-18",
-      notes: "Nominally expired 31 Dec 2025. **In-principle VGSA 2026 reached** and endorsed by AEU Joint Primary and Secondary Sector Council on 15 May 2026 — pending member ballot. Ballot timeline (per AEU Vic): in-person regional meetings over four weeks from Tuesday 19 May 2026, online statewide briefings as alternative, online member vote in the week of 15–18 June 2026 (close 18 June 2026, result communicated shortly after). Headline: 28.3% over 4 years for teachers and principals, beginning with a ~12% combined rise by October 2026 that includes structural adjustments at entry and top steps (+$12,343 for graduate, bringing T1-1 into line with NSW; +$15,393 for T2-6, taking it ahead of NSW). Top of scale to reach $151,419 by 2029. Until member ratification, VGSA 2022 remains legally operative; the schedule entries from Oct 2026 onwards reflect the in-principle deal and are subject to change. Prior path: AEU claim 35% / 3 yrs; government offer of 17% / 4 yrs tabled 17 Mar 2026 was rejected, triggering the first state-wide teacher strike in 13 years on 24 Mar 2026."
+      notes: "Nominally expired 31 Dec 2025. **In-principle VGSA 2026 reached** and endorsed by AEU Joint Primary and Secondary Sector Council on 15 May 2026 — pending member ballot. Ballot timeline (per AEU Vic): in-person regional meetings over four weeks from Tuesday 19 May 2026, online statewide briefings as alternative, online member vote in the week of 15–18 June 2026 (close 18 June 2026, result communicated shortly after). As of 1 June 2026 the member meetings are in progress and the online ballot has not yet opened. Headline: 28.3% over 4 years for teachers and principals, beginning with a ~12% combined rise by October 2026 that includes structural adjustments at entry and top steps (+$12,343 for graduate, bringing T1-1 into line with NSW; +$15,393 for T2-6, taking it ahead of NSW). Top of scale to reach $151,419 by 2029. Until member ratification, VGSA 2022 remains legally operative; the schedule entries from Oct 2026 onwards reflect the in-principle deal and are subject to change. Prior path: AEU claim 35% / 3 yrs; government offer of 17% / 4 yrs tabled 17 Mar 2026 was rejected, triggering the first state-wide teacher strike in 13 years on 24 Mar 2026."
     },
     graduate: {
       classification: "Classroom Teacher Range 1 Subdivision 1 (T1-1)",
@@ -195,14 +199,14 @@ window.SALARY_DATA = [
     code: "QLD",
     name: "Queensland",
     system: "Queensland Department of Education",
-    verifiedOn: "2026-05-19",
+    verifiedOn: "2026-06-01",
     ea: {
       name: "Department of Education State School Teachers' Certified Agreement 2022",
       status: "expired-in-negotiation",
       commenced: "2022-07-01",
       expires: "2025-06-30",
       published: "2022-12-01",
-      notes: "**CA 2022 nominally expired 30 Jun 2025**; remains operative pending a successor agreement. EB11 negotiations: October 2025 ballot rejected by teachers; the teachers' agreement is currently in **QIRC arbitration**. A separate EB11 tranche covering school support staff (teacher aides) was certified 13 Mar 2026 — earlier versions of this dataset incorrectly conflated that with the teachers' agreement. The proposed structural change to the graduate starting rate (one pay-point uplift to $90,833) was part of the *rejected* teachers' offer and is **not** in effect; graduate teachers remain on Band 2 Step 1. Earlier versions of this dataset also incorrectly used Band 1 Step 1 (the 3-year-trained scale) for graduate teachers — Band 2 Step 1 is the correct 4-year-trained graduate classification. Prior agreement: DoE State School Teachers' CA 2019."
+      notes: "**CA 2022 nominally expired 30 Jun 2025**; remains operative pending a successor agreement. EB11 negotiations: October 2025 ballot rejected by teachers; the teachers' agreement is currently in **QIRC arbitration** (re-verified 1 Jun 2026: no arbitration outcome yet, no hearing date guaranteed for 2026). A separate EB11 tranche covering school support staff (teacher aides) was certified 13 Mar 2026 — earlier versions of this dataset incorrectly conflated that with the teachers' agreement. The proposed structural change to the graduate starting rate (one pay-point uplift to $90,833) was part of the *rejected* teachers' offer and is **not** in effect; graduate teachers remain on Band 2 Step 1. Earlier versions of this dataset also incorrectly used Band 1 Step 1 (the 3-year-trained scale) for graduate teachers — Band 2 Step 1 is the correct 4-year-trained graduate classification. Prior agreement: DoE State School Teachers' CA 2019."
     },
     graduate: {
       classification: "Band 2 Step 1 (4-year-trained graduate entry). Band 1 is the 3-year-trained scale and does not apply to teachers with a four-year degree. Progression Band 2 → Senior Teacher → Experienced Senior Teacher 1 → Experienced Senior Teacher 2 is step-based, with each post-Band-2 step requiring Proficient accreditation plus an Annual Performance Review.",
@@ -240,14 +244,14 @@ window.SALARY_DATA = [
       {
         id: "qld-src-3",
         url: "https://www.qtu.asn.au/salaries-CA2022",
-        accessed: "2026-05-19",
+        accessed: "2026-06-01",
         published: "2023-01-19",
         usedFor: "Full CA 2022 salary schedule: Band 2 Step 1 (graduate, 4-year-trained), Senior Teacher, Experienced Senior Teacher 1 & 2 — every effective date 1 Jul 2022 / 2023 / 2024"
       },
       {
         id: "qld-src-4",
         url: "https://alt-qed.qed.qld.gov.au/working-with-us/delivering-for-queensland-teachers/eb-updates",
-        accessed: "2026-04-17",
+        accessed: "2026-06-01",
         published: "2025-11-18",
         usedFor: "EB11 negotiation timeline, ballot failure, arbitration referral"
       },
@@ -266,14 +270,14 @@ window.SALARY_DATA = [
     code: "WA",
     name: "Western Australia",
     system: "Western Australian Department of Education",
-    verifiedOn: "2026-05-19",
+    verifiedOn: "2026-06-01",
     ea: {
       name: "School Education Act Employees' (Teachers and Administrators) General Agreement 2023",
       status: "current",
       commenced: "2024-09-09",
       expires: "2026-12-05",
       published: "2024-11-04",
-      notes: "Registered at WAIRC 4 Nov 2024 with pay increases of 5% / 4% / 3% applied retrospectively from 6 Dec 2023. Final scheduled increase took effect 6 Dec 2025. Successor bargaining: 2026 Log of Claims development was opened by SSTUWA in late 2025 (per September 2025 Western Teacher); no successor offer tabled and no new EA as of 19 May 2026. Nominal expiry 5 Dec 2026 still upcoming. **Top-of-scale methodology**: this comparison uses Senior Teacher Classification 2 (ST2), introduced under the 2023 General Agreement effective 6 Dec 2023. ST2 entry requires 12 months at ST1 plus agreement to perform two senior-teacher duties; ST1 entry requires full TRBWA registration, 12 months at the top L2 increment, and one of five Senior Teacher Pathways (PD portfolio, postgraduate qualification, prior equivalent role, mentor role, or HALT certification). Competency-based but not particularly rigorous — broadly comparable in process to SA's Tier 9. Level 3 Classroom Teacher (L3CT) sits above as a portfolio-gated advanced classification (Dec 2025: L3.1 $137,567 / L3.2 $141,551) and Level 3.3 ($147,077) is a role-contingent classification at 'identified schools in need'; both excluded as promotion-equivalent. Pre-Dec 2023 there was no ST2 — single-tier Senior Teacher rates under the 2021 EA are shown for historical continuity. Prior agreement: 2021 General Agreement (registered 2 Aug 2022, delivered $3,130 flat increases)."
+      notes: "Registered at WAIRC 4 Nov 2024 with pay increases of 5% / 4% / 3% applied retrospectively from 6 Dec 2023. Final scheduled increase took effect 6 Dec 2025. Successor bargaining: 2026 Log of Claims development was opened by SSTUWA in late 2025 (per September 2025 Western Teacher); per the February 2026 Western Teacher, log development continues through 2026 with no successor offer tabled as of 1 Jun 2026. Nominal expiry 5 Dec 2026 still upcoming. **Top-of-scale methodology**: this comparison uses Senior Teacher Classification 2 (ST2), introduced under the 2023 General Agreement effective 6 Dec 2023. ST2 entry requires 12 months at ST1 plus agreement to perform two senior-teacher duties; ST1 entry requires full TRBWA registration, 12 months at the top L2 increment, and one of five Senior Teacher Pathways (PD portfolio, postgraduate qualification, prior equivalent role, mentor role, or HALT certification). Competency-based but not particularly rigorous — broadly comparable in process to SA's Tier 9. Level 3 Classroom Teacher (L3CT) sits above as a portfolio-gated advanced classification (Dec 2025: L3.1 $137,567 / L3.2 $141,551) and Level 3.3 ($147,077) is a role-contingent classification at 'identified schools in need'; both excluded as promotion-equivalent. Pre-Dec 2023 there was no ST2 — single-tier Senior Teacher rates under the 2021 EA are shown for historical continuity. Prior agreement: 2021 General Agreement (registered 2 Aug 2022, delivered $3,130 flat increases)."
     },
     graduate: {
       classification: "Level 2.1 (four-year-trained graduate entry)",
@@ -313,7 +317,7 @@ window.SALARY_DATA = [
       {
         id: "wa-src-3",
         url: "https://www.sstuwa.org.au/WesternTeacher/2025/volume-542-march-2025/time-reap-eba-rewards",
-        accessed: "2026-05-18",
+        accessed: "2026-06-01",
         published: "2025-03-01",
         usedFor: "2023 EA: agreement name, registration date, 5%/4%/3% increase schedule"
       },
@@ -332,14 +336,14 @@ window.SALARY_DATA = [
     code: "SA",
     name: "South Australia",
     system: "South Australian Department for Education",
-    verifiedOn: "2026-05-18",
+    verifiedOn: "2026-06-01",
     ea: {
       name: "South Australian School and Preschool Education Staff Enterprise Agreement 2024",
       status: "current",
       commenced: "2024-03-25",
       expires: "2027-03-24",
       published: "2024-03-25",
-      notes: "36-month nominal life delivering 4% (backdated to May 2023) + 3% + 3% + 3% for teachers. The final scheduled 3% rise should have taken effect first full pay period on or after 1 May 2026 (i.e. 4 May 2026). 2026-05-18: SA Department for Education school-teachers-pay-rates.pdf returned HTTP 403 during this refresh, and the AEU SA salary rates page was also unreachable — May 2026 figures here ($84,971 / $123,236) are computed from the announced 3% increase and remain unverified against the official rate sheet; flag for human re-check. Prior agreement: SA School and Preschool Education Staff EA 2020."
+      notes: "36-month nominal life delivering 4% (backdated to May 2023) + 3% + 3% + 3% for teachers. The final scheduled 3% rise should have taken effect first full pay period on or after 1 May 2026 (i.e. 4 May 2026). 2026-05-18 and 2026-06-01: SA Department for Education school-teachers-pay-rates.pdf returned HTTP 403 on both refresh attempts, and the AEU SA salary rates page was also unreachable both times — May 2026 figures here ($84,971 / $123,236) are computed from the announced 3% increase and remain unverified against the official rate sheet; flag for human re-check. Prior agreement: SA School and Preschool Education Staff EA 2020."
     },
     graduate: {
       classification: "Teacher Tier 1 (permanent, 4-year-trained). Pre-2024 EA: Step 1 (same 9-step scale, relabelled as 'Tier' in the 2024 EA).",
@@ -381,7 +385,7 @@ window.SALARY_DATA = [
       {
         id: "sa-src-3",
         url: "https://www.education.sa.gov.au/docs/p-and-c/employee-relations-awards-and-agreements/school-teachers-pay-rates.pdf",
-        accessed: "2026-04-17",
+        accessed: "2026-06-01",
         published: "2025-05-09",
         usedFor: "Current rate sheet anchor for Tier 1/Tier 9 reverse-verifying 2023/2024 figures"
       },
@@ -400,7 +404,7 @@ window.SALARY_DATA = [
     code: "TAS",
     name: "Tasmania",
     system: "Tasmanian Department for Education, Children and Young People (DECYP)",
-    verifiedOn: "2026-05-19",
+    verifiedOn: "2026-06-01",
     ea: {
       name: "Teachers Agreement 2026 (alongside Teaching Service (Tasmanian Public Sector) Award S197)",
       status: "current",
@@ -439,7 +443,7 @@ window.SALARY_DATA = [
       {
         id: "tas-src-1",
         url: "https://publicdocumentcentre.education.tas.gov.au/library/Shared%20Documents/Salary-Scales.pdf",
-        accessed: "2026-05-19",
+        accessed: "2026-06-01",
         published: "2026-03-23",
         usedFor: "Current DECYP salary scales (23 Mar 2026): Teacher Band 1 Levels 1–13 and Advanced Skills Teacher Band 2 Level 3 ($125,464). Used as the canonical current rate; pre-2026 AST figures are calculated by applying the same Band 1 EA % rises."
       },
@@ -486,14 +490,14 @@ window.SALARY_DATA = [
     code: "ACT",
     name: "Australian Capital Territory",
     system: "ACT Education Directorate (ACT Public Service)",
-    verifiedOn: "2026-05-18",
+    verifiedOn: "2026-06-01",
     ea: {
       name: "ACT Public Sector Education Directorate (Teaching Staff) Enterprise Agreement 2023–2026",
       status: "expired-in-negotiation",
       commenced: "2023-08-21",
       expires: "2026-03-31",
       published: "2023-08-14",
-      notes: "Nominal expiry 31 March 2026 has now passed; the 2023–2026 EA continues to operate until replaced. Successor bargaining: initial offer 9 Dec 2025, improved offer 11 Mar 2026 (includes $1,250 cost-of-living payment, ~5.5% avg across classifications, super to 12.5%). As of 18 May 2026 the offer has not progressed to a ballot and no successor has been approved (per ACTPS bargaining portal and AEU ACT). Major restructure 27 Jan 2024: old Classroom Teacher 1–10 renamed to Teacher Level 1–8. New top step TL8 created 27 Jan 2025; CT10 holders progressed CT10 → TL7 → TL8. Prior agreement: 2018–2022 EA."
+      notes: "Nominal expiry 31 March 2026 has now passed; the 2023–2026 EA continues to operate until replaced. Successor bargaining: initial offer 9 Dec 2025, improved offer 11 Mar 2026 (includes $1,250 cost-of-living payment, ~5.5% avg across classifications, super to 12.5%). As of 1 June 2026 the offer has not progressed to a ballot and no successor has been approved (per ACTPS bargaining portal and AEU ACT). Major restructure 27 Jan 2024: old Classroom Teacher 1–10 renamed to Teacher Level 1–8. New top step TL8 created 27 Jan 2025; CT10 holders progressed CT10 → TL7 → TL8. Prior agreement: 2018–2022 EA."
     },
     graduate: {
       classification: "Teacher Level 1 (TL1, New Educator). Pre-27 Jan 2024: Classroom Teacher 2.",
@@ -551,7 +555,7 @@ window.SALARY_DATA = [
       {
         id: "act-src-4",
         url: "https://www.cmtedd.act.gov.au/employment-framework/for-employees/agreements/2025-enterprise-bargaining",
-        accessed: "2026-04-17",
+        accessed: "2026-06-01",
         published: "not stated",
         usedFor: "Successor EA bargaining status, offer dates"
       }
@@ -563,7 +567,7 @@ window.SALARY_DATA = [
     code: "NT",
     name: "Northern Territory",
     system: "NT Department of Education (NT Public Sector)",
-    verifiedOn: "2026-05-18",
+    verifiedOn: "2026-06-01",
     ea: {
       name: "Northern Territory Public Sector Educators' 2024–2027 Enterprise Agreement",
       status: "current",
@@ -619,9 +623,9 @@ window.SALARY_DATA = [
       {
         id: "nt-src-4",
         url: "https://teachintheterritory.nt.gov.au/pay-and-benefits",
-        accessed: "2026-05-18",
+        accessed: "2026-06-01",
         published: "not stated",
-        usedFor: "Cross-verification of Jan 2026 CT1–CT9 rates (CT1 $96,180 / CT9 $136,997 reconfirmed 2026-05-18)"
+        usedFor: "Cross-verification of Jan 2026 CT1–CT9 rates (CT1 $96,180 / CT9 $136,997 reconfirmed 2026-06-01)"
       }
     ]
   }
@@ -631,6 +635,16 @@ window.SALARY_DATA = [
 // Running log of material data changes. Each entry covers one jurisdiction.
 // Append new entries at the top (most recent first).
 window.CHANGELOG = [
+  {
+    date: "2026-06-01",
+    jurisdiction: "SA",
+    summary: "Second re-verification attempt: SA DfE school-teachers-pay-rates.pdf and AEU SA salary rates page both returned HTTP 403 again. May 2026 figures ($84,971 / $123,236) remain computed from the announced 3% rise rather than confirmed against the official rate sheet. ea.notes updated to record both the 18 May and 1 June attempts; still flagged for human re-check."
+  },
+  {
+    date: "2026-06-01",
+    jurisdiction: "ALL",
+    summary: "Routine refresh — no material figure or status changes across the 8 jurisdictions since the 18–19 May refresh. VIC member ballot remains scheduled for the week of 15–18 June 2026 (member meetings in progress, online vote not yet open); QLD EB11 (teachers) remains in QIRC arbitration with no hearing date confirmed; WA log-of-claims development continuing per the February 2026 Western Teacher; ACT 11 Mar 2026 successor offer has not progressed to a ballot. accessed dates and per-jurisdiction verifiedOn bumped to 2026-06-01; DATA_AS_OF advanced to 2026-06-01."
+  },
   {
     date: "2026-05-20",
     jurisdiction: "VIC",
